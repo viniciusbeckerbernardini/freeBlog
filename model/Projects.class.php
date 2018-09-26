@@ -1,10 +1,10 @@
 <?php 	
 /**
-*@classname Projetos
+*@class Projetcs
 *@author Vinícius Becker Bernardini
 */
 
-class Projetos{
+class Projects{
 	// Creating the atributes
 	private projectID;
 	private name;
@@ -56,6 +56,8 @@ class Projetos{
 	private function setDeliverydate():string{
 		return $this->deliveryDate;
 	}
+
+	// No tooString yet
 
 
 }
