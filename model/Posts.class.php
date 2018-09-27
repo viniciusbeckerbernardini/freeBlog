@@ -53,7 +53,7 @@ class Posts{
 	}
 
 	// Creating Posts toString
-	public __toString(){
+	public function __toString(){
 		return nl2br(
 		"ID da postagem: ".getPostsId().
 		"Nome da postagem: ".getName().
