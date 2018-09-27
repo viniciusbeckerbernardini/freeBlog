@@ -1,28 +1,34 @@
 <?php 	
 /**
-*@class Projetcs
-*@author Vinícius Becker Bernardini
+* @class Projetcs
+* @author Vinícius Becker Bernardini
 */
 
 class Projects{
 	// Creating the atributes
-	private projectID;
-	private name;
-	private content;
-	private featuredPhoto;
-	private deliveryDate;
+	private $projectID;
+	private $name;
+	private $content;
+	private $featuredPhoto;
+	private $deliveryDate;
 
 	// Creating the constructor
 	public function __construct(){
 
 	}
-
 	// Creating the destructor
 	public function __destruct(){
 
 	}
-
 	// Creating the gettes and setters method's
+	// Getter of projectID
+	public function getProjectid():int{
+		return $this->projectID;
+	}
+	// Setter of projectID
+	public function setProjectid(int $value){
+		$this->projectID = $v;
+	}
 	// Getter of name
 	public function getName():string{
 		return $this->name;
@@ -50,14 +56,25 @@ class Projects{
 	}
 	// Getter of Delivery date
 	private function getDeliverydate(string $value){
-		return $this->deliveryDate;
+		if(ProjectsValidation::validaData($value)==true){
+			return $this->deliveryDate;
+		}else{
+			return false;
+		}
 	}
 	// Setter of Delivery date
 	private function setDeliverydate():string{
 		return $this->deliveryDate;
 	}
 
-	// No tooString yet
-
-
+	// Projects tooString
+	public __tooString(){
+		return nl2br(
+			"ID do projeto: ".getProjectid().
+			"Nome do projeto: ".getName().
+			"Conteúdo: ".getContent().
+			"Imagem destacada: ".getFeaturedphoto().
+			"Data de entrega: ".getDeliverydate()
+		);
+	}
 }
