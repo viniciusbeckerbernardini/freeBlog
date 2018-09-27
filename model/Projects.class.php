@@ -56,7 +56,7 @@ class Projects{
 	}
 	// Getter of Delivery date
 	private function getDeliverydate(string $value){
-		if(ProjectsValidation::validaData($value)==true){
+		if(Validation::validaData($value)==true){
 			return $this->deliveryDate;
 		}else{
 			return false;
@@ -68,7 +68,7 @@ class Projects{
 	}
 
 	// Projects tooString
-	public __tooString(){
+	public function __toString(){
 		return nl2br(
 			"ID do projeto: ".getProjectid().
 			"Nome do projeto: ".getName().
