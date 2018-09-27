@@ -1,9 +1,8 @@
 <?php 
 // Register project test send file
+// Config with autoload test
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 $u = new Projects();
-$u->setName('JAJA');
-echo $u->getName();
 ?>
 
 <form method="post" action="../../controller/projectController.php">
