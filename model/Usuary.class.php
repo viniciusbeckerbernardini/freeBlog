@@ -63,7 +63,7 @@ class Usuary{
 	}
 
 	// Creating Usuary toString
-	public __toString(){
+	public function __toString(){
 		return nl2br(
 		"ID do usuário: ".getUsuaryId().
 		"Nome do usuário: ".getName().
