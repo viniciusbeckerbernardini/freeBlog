@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 *@class Category
 *@author Vinícius Becker Bernardini
@@ -19,26 +19,26 @@ class Category{
 	}
 	// Getters and Setters methods
 	// Getter of category id
-	public function getCategoryid():int{
+	public function getCategoryId():int{
 		return $this->categoryId;
 	}
 	// Setter of category id
-	public function setCategoryid(int $value){
+	public function setCategoryId(int $value){
 		$this->categoryId = $value;
 	}
 	// Getter of name
 	public function getName():string{
 		return $this->name;
 	}
-	// Setter of name 
+	// Setter of name
 	public function setName(string $value){
 		$this->name = $value;
 	}
 
 	// Category tooString
-	public __toString(){
+	public function __toString(){
 		return nl2br(
-		"ID da categoria: ".getCategoryid().
+		"ID da categoria: ".getCategoryId().
 		"Nome da categoria: ".getName());
 	}
 
