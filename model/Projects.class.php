@@ -28,8 +28,6 @@ class Projects{
 		$this->setFeaturedphoto('');
 		$this->setDeliverydate('');
 		echo "Object destruct was be a sucess!";
-
-
 	}
 	// Creating the gettes and setters methods
 	// Getter of projectID
@@ -78,9 +76,13 @@ class Projects{
 	public function __toString(){
 		return nl2br(
 			"ID do projeto: ".$this->getProjectid().
+			"<br>".
 			"Nome do projeto: ".$this->getName().
+			"<br>".
 			"Conteúdo: ".$this->getContent().
+			"<br>".
 			"Imagem destacada: ".$this->getFeaturedphoto().
+			"<br>".
 			"Data de entrega: ".$this->getDeliverydate()
 		);
 	}
