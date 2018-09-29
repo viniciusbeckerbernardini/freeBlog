@@ -13,21 +13,32 @@ class Projects{
 	private $deliveryDate;
 
 	// Creating the constructor
-	public function __construct(){
-
+	public function __construct($id = 0,$name,$content,$featuredPhoto,$deliveryDate){
+		$this->setProjectid($id);
+		$this->setName($name);
+		$this->setContent($content);
+		$this->setFeaturedphoto($featuredPhoto);
+		$this->setDeliverydate($deliveryDate);
 	}
 	// Creating the destructor
 	public function __destruct(){
+		$this->setProjectid(-1);
+		$this->setName('');
+		$this->setContent('');
+		$this->setFeaturedphoto('');
+		$this->setDeliverydate('');
+		echo "Object destruct was be a sucess!";
+
 
 	}
-	// Creating the gettes and setters method's
+	// Creating the gettes and setters methods
 	// Getter of projectID
 	public function getProjectid():int{
 		return $this->projectID;
 	}
 	// Setter of projectID
 	public function setProjectid(int $value){
-		$this->projectID = $v;
+		$this->projectID = $value;
 	}
 	// Getter of name
 	public function getName():string{
@@ -55,26 +66,22 @@ class Projects{
 		$this->featuredPhoto = $value;
 	}
 	// Getter of Delivery date
-	private function getDeliverydate(string $value){
-		if(Validation::validaData($value)==true){
-			return $this->deliveryDate;
-		}else{
-			return false;
-		}
+	private function getDeliverydate():string{
+		return $this->deliveryDate;
 	}
 	// Setter of Delivery date
-	private function setDeliverydate():string{
-		return $this->deliveryDate;
+	private function setDeliverydate(string $value){
+		$this->deliveryDate = $value;
 	}
 
 	// Projects tooString
 	public function __toString(){
 		return nl2br(
-			"ID do projeto: ".getProjectid().
-			"Nome do projeto: ".getName().
-			"Conteúdo: ".getContent().
-			"Imagem destacada: ".getFeaturedphoto().
-			"Data de entrega: ".getDeliverydate()
+			"ID do projeto: ".$this->getProjectid().
+			"Nome do projeto: ".$this->getName().
+			"Conteúdo: ".$this->getContent().
+			"Imagem destacada: ".$this->getFeaturedphoto().
+			"Data de entrega: ".$this->getDeliverydate()
 		);
 	}
 }
