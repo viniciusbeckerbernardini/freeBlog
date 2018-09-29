@@ -4,6 +4,7 @@
 	<title>freeBlog</title>
 	<!-- Metas  -->
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	<!-- End of metas -->
 	<!-- Loading the stylesheet -->
 	<link rel="stylesheet" type="text/css" href="../../css/materialize.min.css">

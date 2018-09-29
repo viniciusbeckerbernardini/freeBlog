@@ -1,10 +1,10 @@
 				</div>
 				<!-- Footer content -->
-				<footer class="page-footer">
-					<div class="footer-copyright">
-						<div class="container">
-							© 2014 Copyright Text
-							<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+				<footer class="page-footer white">
+					<div class="footer-copyright center">
+						<div class="container black-text text-lighten-4">
+							<?php echo date('Y'); ?> freeBlog |
+							<a target="_blank" href="https://github.com/viniciusbeckerbernardini/freeBlog">GitHub</a>
 						</div>
 					</div>
 					<!-- End of footer content -->
@@ -14,8 +14,7 @@
 					<script src="../../js/materialize.min.js"></script>
 					<script src="../../js/my-js.js"></script>
 					<!-- End of loading system scripts -->
-				</footer>			
-			</header>
-		</section>
-	</body>
-	</html>		
+				</footer>
+			</section>
+		</body>
+		</html>		
