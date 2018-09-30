@@ -15,17 +15,17 @@ class SQL extends PDO{
 	public function setParameters($statements,$parameters =[]){
 		// Making a foreach to send to function setParameter all parameters
 		foreach ($parameters as $key => $value) {
-			$this->setParam($statements,$key,$value);
+			$this->setParameter($statements,$key,$value);
 		}
 	}
 	// Creating a method to receive all parameters of the setParameters function
 	public function setParameter($statement,$key,$value){
-		$statement->bindParam($key,$value)
+		$statement->bindParam($key,$value);
 	}
 	// Creating a method to receive the parameters and make a sql query
 	public function query($rawQuery,$parameters = []){
 		$statement = $this->conn->prepare("$rawQuery");
-		$this->setParams($statement,$parameters);
+		$this->setParameters($statement,$parameters);
 		$statement->execute();
 		return $statement;
 	}

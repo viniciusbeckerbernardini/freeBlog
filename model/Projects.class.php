@@ -13,8 +13,7 @@ class Projects{
 	private $deliveryDate;
 
 	// Creating the constructor
-	public function __construct($id = 0,$name,$content,$featuredPhoto,$deliveryDate){
-		$this->setProjectid($id);
+	public function __construct($name,$content,$featuredPhoto,$deliveryDate){
 		$this->setName($name);
 		$this->setContent($content);
 		$this->setFeaturedphoto($featuredPhoto);
@@ -27,7 +26,6 @@ class Projects{
 		$this->setContent('');
 		$this->setFeaturedphoto('');
 		$this->setDeliverydate('');
-		echo "Object destruct was be a sucess!";
 	}
 	// Creating the gettes and setters methods
 	// Getter of projectID
@@ -64,26 +62,23 @@ class Projects{
 		$this->featuredPhoto = $value;
 	}
 	// Getter of Delivery date
-	private function getDeliverydate():string{
+	public function getDeliverydate():string{
 		return $this->deliveryDate;
 	}
 	// Setter of Delivery date
-	private function setDeliverydate(string $value){
+	public function setDeliverydate(string $value){
 		$this->deliveryDate = $value;
 	}
 
 	// Projects tooString
 	public function __toString(){
-		return nl2br(
-			"ID do projeto: ".$this->getProjectid().
-			"<br>".
-			"Nome do projeto: ".$this->getName().
-			"<br>".
-			"Conteúdo: ".$this->getContent().
-			"<br>".
-			"Imagem destacada: ".$this->getFeaturedphoto().
-			"<br>".
-			"Data de entrega: ".$this->getDeliverydate()
-		);
+		return 
+		"Nome do projeto: ".$this->getName().
+		"<br>".
+		"Conteúdo: ".$this->getContent().
+		"<br>".
+		"Imagem destacada: ".$this->getFeaturedphoto().
+		"<br>".
+		"Data de entrega: ".$this->getDeliverydate();
 	}
 }

@@ -6,25 +6,24 @@ require_once('..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.ph
 ?>
 <h2 class="center">Registrar projeto</h2>
 <div class="row">	
-	<form class="col s12" method="post" action="../../controller/projectController.php">
+	<form class="col s12" method="post" enctype="multipart/form-data" action="../../controller/projectController.php" >
 		<div class="input-field col s6">
-			<input id="last_name" type="text" class="validate">
-			<label for="last_name">Nome do projeto</label>
+			<input id="projectname" name="projectname" type="text" class="validate">
+			<label for="projectname">Nome do projeto</label>
 		</div>
 		<div class="input-field col s6">
-			<input type="text" class="datepicker">
-			<label for="last_name">Data de entrega</label>
+			<input type="text" id="deliverydate" name="deliverydate" class="datepicker">
+			<label for="deliverydate">Data de entrega</label>
 		</div>
 		<div class="col s12">	
 			<label>Imagem de destaque</label>
 			<div class = "file-field input-field">
-				<div class = "btn">
+				<div class="btn">
 					<span>Enviar</span>
-					<input type = "file" />
+					<input type="file" name="featuredphoto" enctype="multipart/form-data"/>
 				</div>
 				<div class = "file-path-wrapper">
-					<input class = "file-path validate" type = "text"
-					placeholder = "Upload file" />
+					<input class ="file-path validate" type ="text" placeholder="Upload file"/>
 				</div>
 			</div>
 		</div>

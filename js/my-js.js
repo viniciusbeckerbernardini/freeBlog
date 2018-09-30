@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('.sidenav').sidenav();
 	// Date picker
 	$('.datepicker').datepicker({
-		format:'m/d/yyyy',
+		format:'m-d-yyyy', 
 		i18n:{
 			cancel:'Cancelar',
 			done:'Enviar',
