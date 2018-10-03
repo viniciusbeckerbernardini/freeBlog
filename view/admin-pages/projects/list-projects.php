@@ -29,28 +29,18 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	<tbody>
 		<?php foreach ($results as $result):?>
 			<tr>
+				<td><?php echo $result['project_id'] ?></td>
+				<td><?php echo $result['name'] ?></td>
+				<td><?php echo $result['content'] ?></td>
+				<td><?php echo "<img src=".$result['featuredphoto'].">" ?></td>
+				<td><?php echo $result['deliverydate'] ?></td>
 				<td>
-					<?php echo $result['project_id'] ?>
-				</td>
-				<td>
-					<?php echo $result['name'] ?>
-				</td>
-				<td>
-					<?php echo $result['content'] ?>
-				</td>
-				<td>
-					<?php echo "<img src=".$result['featuredphoto'].">" ?>
-				</td>
-				<td>
-					<?php echo $result['deliverydate'] ?>
-				</td>
-				<td>
-					<a href="update-project.php?id=<?php echo $result['project_id']; ?>&name=<?php echo $result['name'];?>&content=<?php echo  $result['content'];?>&fphoto=<?php echo $result['featuredphoto'];?>&ddate=<?php echo $result['deliverydate'];?>" class="btn waves-effect waves-light">
+					<a href="update-project.php?id=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light">
 						Atualizar
 					</a>
-					<button class="btn waves-effect waves-light red" type="reset">
+					<a href="../../../controller/projectController.php?operation=delete&projectID=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light red">
 						Deletar
-					</button>
+					</a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

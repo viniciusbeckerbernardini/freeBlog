@@ -6,13 +6,13 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIREC
 ?>
 <h2 class="center">Registrar projeto</h2>
 <div class="row">	
-	<form class="col s12" method="post" enctype="multipart/form-data" action="../../controller/projectController.php?operation=create" >
+	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/projectController.php?operation=create" >
 		<div class="input-field col s6">
 			<input id="projectname" name="projectname" type="text" class="validate">
 			<label for="projectname">Nome do projeto</label>
 		</div>
 		<div class="input-field col s6">
-			<input type="text" id="deliverydate" name="deliverydate" class="datepicker">
+			<input type="text" id="deliverydate" name="deliverydate" class="datepicker date">
 			<label for="deliverydate">Data de entrega</label>
 		</div>
 		<div class="col s12">	

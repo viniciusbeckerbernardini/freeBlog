@@ -9,6 +9,7 @@ require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Getting the operation using $_GET
 $operation = $_GET['operation'];
 switch ($operation) {
+
 	case 'create':
 	// Getting the values of the form using $_POST
 	$name = $_POST['projectname'];
@@ -37,27 +38,79 @@ switch ($operation) {
 	}
 	// Verifyng if he moves the file to directory, if its all right create the project
 	if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
-	// Creating the url to acess this photos after
+		// Creating the url to acess this photos after
 		$featuredPhotoPath = $_SERVER['SERVER_NAME'].DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
-	// Instance of ProjectDAO, passing the parameters to the constructor to set the values
+		// Instance of ProjectDAO, passing the parameters to the constructor to set the values
 		$p = new ProjectsDAO($name,$content,$featuredPhotoPath,$deliverydate);
-	// Using the function createProject to create the register
+		// Using the function createProject to create the register
 		$p->createProject();
+		
+		// Printing the result
 		echo "<h2>Projeto criado!</h2>";
 		echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
 	}
 	break;
 
 	case 'update':
+	// Getting the values of the form using $_POST
+	$id = (int)$_POST['projectid'];
+	$name = $_POST['projectname'];
+	$deliverydate = $_POST['deliverydate'];
+	$content = $_POST['content'];
+	$nameForPhoto = str_replace(' ','_',$name);
+	$featuredPhoto = $_FILES['featuredphoto'];
+
+	// Moving the photo into directory
+	// Checking possible error
+	if($featuredPhoto['error']){
+		if($featuredPhoto['error'] == 4){
+			throw new Exception("Erro no envio do arquivo, erro: O arquivo já existe");
+		}
+	}else{
+		// Crating the constant name of the directory
+		define('DIRNAME', "uploads");
+		// Creating the path of upload
+		$dirUpload = "..".DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.date('Y').DIRECTORY_SEPARATOR.date('m');	
+		// Checking if the path exists, if not create the path
+		if(!is_dir($dirUpload)){
+			mkdir('..'.DIRECTORY_SEPARATOR.DIRNAME);
+			mkdir('..'.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.date('Y'));
+			mkdir($dirUpload);
+		}
+		// Changing the name of the file to a pattern name
+		$featuredPhoto['userfile']['name'] = 'featuredPhoto_'.$nameForPhoto.'_'.date('d_m_y_g_i_h').'.jpg'; 
+	}
+	// Verifyng if he moves the file to directory, if its all right create the project
+	if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
+		// Creating the url to acess this photos after
+		$featuredPhotoPath = $_SERVER['SERVER_NAME'].DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
+		// Instance of ProjectDAO, passing the parameters to the constructor to set the values
+		$p = new ProjectsDAO();
+		// Using the function createProject to create the register
+		$p->updateProject($id,$name,$content,$featuredPhotoPath,$deliverydate);
 		
+		// Printing the result
+		echo "<h2>Projeto atualizado!</h2>";
+		echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	}
 	break;
 
 	case 'delete':
-
+	// Getting the values of the url using $_GET
+	$projectID = $_GET['projectID'];
+	// Instancing the ProjectsDAO
+	$p = new ProjectsDAO();
+	// Setting the id of the project
+	$p->setProjectid($projectID);
+	// Calling the delete function
+	$p->deleteProject();
+	// Printing the result
+	echo "<h2>Projeto deletado!</h2>";
+	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
 	break;
 	
 	default:
-		echo "Operação inválida";
+	echo "Operação inválida";
 	break;
 }
 ?>
