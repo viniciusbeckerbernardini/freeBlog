@@ -10,9 +10,10 @@
 					<!-- End of footer content -->
 					<!-- Loading system scripts -->
 					<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
-					<script src="../../js/jQuery.min.js"></script>
-					<script src="../../js/materialize.min.js"></script>
-					<script src="../../js/my-js.js"></script>
+					<script src="../../../js/jQuery.min.js"></script>
+					<script src="../../../js/jQuery.mask.js"></script>
+					<script src="../../../js/materialize.min.js"></script>
+					<script src="../../../js/my-js.js"></script>
 					<!-- End of loading system scripts -->
 				</footer>
 			</section>

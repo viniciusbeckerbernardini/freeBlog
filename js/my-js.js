@@ -62,6 +62,8 @@ $(document).ready(function(){
 		}
 	});
 	// End of datepicker
+	// Date mask
+	$('.date').mask('00-00-0000');
 });
 
 // No jQuery
