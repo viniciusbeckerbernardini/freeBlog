@@ -34,7 +34,7 @@ class UserDAO extends User{
 // Creating Delete function
 	public  function deleteUser($id){
 		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->query("DELETE FROM tb_user where userId = :ID",
-		array(":ID"=>$this->getUsuarioID($id)));
+		$statement = $sql->query("DELETE FROM tb_user where UserId = :ID",
+		array(":ID"=>$this->getUserId($id)));
 	}
 }
