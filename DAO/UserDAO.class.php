@@ -23,7 +23,7 @@ class UserDAO extends User{
 // Creating Update function
 	public function updateUser(){
 		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->query("UPDATE tb_user SET name = :NAME, email = :EMAIL, password = :PASSWORD, userType = :USERTYPE where userId = :ID",
+		$statement = $sql->query("UPDATE tb_user SET name = :NAME, email = :EMAIL, password = :PASSWORD, userType = :USERTYPE where user_id = :ID",
 			array(
 			  ":ID" => $this->getUserId(),
 			  ":NOME"=>$this->getName(),
@@ -34,7 +34,7 @@ class UserDAO extends User{
 // Creating Delete function
 	public  function deleteUser($id){
 		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->query("DELETE FROM tb_user where UserId = :ID",
+		$statement = $sql->query("DELETE FROM tb_user where user_id = :ID",
 		array(":ID"=>$this->getUserId($id)));
 	}
 }
