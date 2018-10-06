@@ -5,36 +5,43 @@
 */
 // Creating Data Acess Object of User
 class UserDAO extends User{
-// Creating Register function
-	public function registerUser(){
-		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->query("INSERT INTO tb_user (name,email,password,userType)
-		VALUES(:NAME,:EMAIL,:PASSWORD,:USERTYPE)",
-		array(":NOME"=>$this->getName(),
-			  ":EMAIL"=>$this->getEmail(),
+	
+	// Creating Register function
+	public function createUser(){
+		$sql = new SQL();
+		$statement = $sql->query("INSERT INTO fb_user (user_name,user_email,user_password,user_type)
+			VALUES(:NAME,:EMAIL,:PASSWORD,:USERTYPE)",
+			array(":NOME"=>$this->getName(),
+				":EMAIL"=>$this->getEmail(),
 				":PASSWORD"=>$this->getPassword(),
-			  ":USERTYPE"=>$this->getUserType()));
-	}
-// Creating List function
-	public function listUser(){
-		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->select("SELECT * FROM tb_user");
-	}
-// Creating Update function
-	public function updateUser(){
-		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->query("UPDATE tb_user SET name = :NAME, email = :EMAIL, password = :PASSWORD, userType = :USERTYPE where user_id = :ID",
-			array(
-			  ":ID" => $this->getUserId(),
-			  ":NOME"=>$this->getName(),
-			  ":EMAIL"=>$this->getEmail(),
-			  ":PASSWORD"=>$this->getPassword(),
 				":USERTYPE"=>$this->getUserType()));
 	}
-// Creating Delete function
+	
+	
+	// Creating Update function
+	public function updateUser(){
+		$sql = new SQL();
+		$statement = $sql->query("UPDATE fb_user SET user_name = :NAME, user_email = :EMAIL, user_password = :PASSWORD, user_type = :USERTYPE where user_id = :ID",
+			array(
+				":ID" => $this->getUserId(),
+				":NOME"=>$this->getName(),
+				":EMAIL"=>$this->getEmail(),
+				":PASSWORD"=>$this->getPassword(),
+				":USERTYPE"=>$this->getUserType()));
+	}
+	
+	// Creating Delete function
 	public  function deleteUser($id){
-		$sql = new SQL("localhost","freeBlog","root","");
-		$statement = $sql->query("DELETE FROM tb_user where user_id = :ID",
-		array(":ID"=>$this->getUserId($id)));
+		$this->setUserid($id);
+		$sql = new SQL();
+		$statement = $sql->query("DELETE FROM fb_user where user_id = :ID",
+			array(":ID"=>$this->getUserId($id)));
+	}
+	// Creating list function
+	public function listUser(){
+		$sql = new SQL();
+		$statement = $sql->query("SELECT * FROM fb_user");
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
 	}
 }

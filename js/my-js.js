@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('.sidenav').sidenav();
 	// Date picker
 	$('.datepicker').datepicker({
-		format:'m-d-yyyy', 
+		format:'yyyy-m-d', 
 		i18n:{
 			cancel:'Cancelar',
 			done:'Enviar',
@@ -63,7 +63,7 @@ $(document).ready(function(){
 	});
 	// End of datepicker
 	// Date mask
-	$('.date').mask('00-00-0000');
+	$('.date').mask('0000-00-00');
 });
 
 // No jQuery

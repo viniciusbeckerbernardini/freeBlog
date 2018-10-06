@@ -10,11 +10,13 @@ class Category{
 	private $name;
 
 	// Creating the constructor
-	public function __construct(){
-
+	public function __construct($name = ""){
+		$this->setName($name);
 	}
 	// Creating the destructor
 	public function __destruct(){
+		$this->setCategoryId(-1);
+		$this->setName("");
 
 	}
 	// Getters and Setters methods

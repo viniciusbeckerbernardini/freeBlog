@@ -7,13 +7,10 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIREC
 <h2 class="center">Projetos</h2>
 <?php 
 // Bring all projects
-// Instancing the class PDO
-$sql = new PDO("mysql:host=localhost;dbname=freeBlog","root","");
-// Making the statement
-$statement = $sql->prepare("SELECT * FROM tb_projects");
-$statement->execute();
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-// print_r($results);
+// Instancing the class ProjectsDAO
+$p = new ProjectsDAO();
+// Getting the data using the listUser Function
+$results = $p->listUser();
 ?>
 <table class="table-responsive">
 	<thead>
@@ -30,10 +27,10 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 		<?php foreach ($results as $result):?>
 			<tr>
 				<td><?php echo $result['project_id'] ?></td>
-				<td><?php echo $result['name'] ?></td>
-				<td><?php echo $result['content'] ?></td>
-				<td><?php echo "<img src=".$result['featuredphoto'].">" ?></td>
-				<td><?php echo $result['deliverydate'] ?></td>
+				<td><?php echo $result['project_name'] ?></td>
+				<td><?php echo $result['project_content'] ?></td>
+				<td><?php echo "<img src=".$result['project_featuredphoto'].">" ?></td>
+				<td><?php echo $result['project_deliverydate'] ?></td>
 				<td>
 					<a href="update-project.php?id=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light">
 						Atualizar

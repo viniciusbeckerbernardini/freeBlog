@@ -9,7 +9,6 @@ require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Getting the operation using $_GET
 $operation = $_GET['operation'];
 switch ($operation) {
-
 	case 'create':
 	// Getting the values of the form using $_POST
 	$name = $_POST['projectname'];
@@ -101,9 +100,8 @@ switch ($operation) {
 	// Instancing the ProjectsDAO
 	$p = new ProjectsDAO();
 	// Setting the id of the project
-	$p->setProjectid($projectID);
 	// Calling the delete function
-	$p->deleteProject();
+	$p->deleteProject($projectID);
 	// Printing the result
 	echo "<h2>Projeto deletado!</h2>";
 	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';

@@ -6,10 +6,10 @@
 
 class Posts{
 	// Creating atributes
-	private $postsId;
+	private $postID;
 	private $name;
-  private $content;
-  private $postCategory;
+	private $content;
+	private $postCategory;
 
 	// Creating constructor
 	public function __construct(){
@@ -20,12 +20,12 @@ class Posts{
 
 	// Creating Getters and Setters methods
 	// Getter of postsId
-	public function getPostsId():int{
-		return $this->postsId;
+	public function getPostid():int{
+		return $this->postsID;
 	}
 	// Setter of postsId
-	public function setPostsId(int $value){
-		$this->postsId = $value;
+	public function setPostid(int $value){
+		$this->postsID = $value;
 	}
 	// Getter of name
 	public function getName():string{
@@ -55,9 +55,9 @@ class Posts{
 	// Creating Posts toString
 	public function __toString(){
 		return nl2br(
-		"ID da postagem: ".getPostsId().
-		"Nome da postagem: ".getName().
-    "Conteúdo da postagem: ".getContent().
-    "Categoria da postagem: ".getPostCategory());
+			"ID da postagem: ".getPostsid().
+			"Nome da postagem: ".getName().
+			"Conteúdo da postagem: ".getContent().
+			"Categoria da postagem: ".getPostCategory());
 	}
 }

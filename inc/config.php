@@ -34,14 +34,4 @@ function loadClass($className){
 }
 // Using the spl function to register the function below
 spl_autoload_register('loadClass');
-// Function to get the informations by id 
-function getInfoById(){
-	$id = $_GET['id'];
-	$sql = new SQL();
-	$statement = $sql->query("SELECT * FROM tb_projects WHERE project_id = :ID",
-		array(":ID"=>$id)
-	);
-	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-	return $result[0];
-}
 ?>
