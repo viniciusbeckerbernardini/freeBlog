@@ -27,7 +27,7 @@ class CategoryDAO extends Category{
 
 	// Making delete category
 	public function deleteCategory($id){
-		$this->setCategoryid($id);
+		$this->setCategoryId($id);
 		$sql = new SQL();
 		$statement = $sql->query("DELETE FROM fb_category WHERE category_id = :ID ",
 			array(":ID"=>$this->getCategoryid()));

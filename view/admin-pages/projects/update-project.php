@@ -11,7 +11,7 @@ $fieldsInfos = $p->getInfoById();
 <div class="row">	
 	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/projectController.php?operation=update" >
 		<div class="input-field col s4">
-			<input id="projectid" name="projectid" type="text" value="<?php echo $fieldsInfos['project_id']; ?>"  class="validate disabled">
+			<input id="projectid" name="projectid" type="text" readonly="readonly" value="<?php echo $fieldsInfos['project_id']; ?>"  class="validate disabled">
 			<label for="projectid">ID do projeto</label>
 		</div>
 		<div class="input-field col s4">

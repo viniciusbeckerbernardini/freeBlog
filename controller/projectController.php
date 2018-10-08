@@ -64,6 +64,10 @@ switch ($operation) {
 	if($featuredPhoto['error']){
 		if($featuredPhoto['error'] == 4){
 			throw new Exception("Erro no envio do arquivo, erro: O arquivo já existe");
+			/* 
+			Ajustar aqui, o arquivo quando atualizamos sem atualizar a foto cai nesse erro, tratar
+			quando estiver na fase de implementação de validações
+			*/
 		}
 	}else{
 		// Crating the constant name of the directory
