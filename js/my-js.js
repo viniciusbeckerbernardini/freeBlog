@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	$('.sidenav').sidenav();
+	// $('.sidenav').sidenav();
+	// Select input
+	$('select').formSelect();
+
 	// Date picker
 	$('.datepicker').datepicker({
 		format:'yyyy-m-d', 
