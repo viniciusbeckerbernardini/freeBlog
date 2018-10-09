@@ -5,7 +5,7 @@
 */
 // Creating Data Acess Object of User
 class UserDAO extends User{
-	
+
 	// Creating Register function
 	public function createUser(){
 		$sql = new SQL();
@@ -16,10 +16,17 @@ class UserDAO extends User{
 				":PASSWORD"=>$this->getPassword(),
 				":USERTYPE"=>$this->getUserType()));
 	}
-	
-	
+
+
 	// Creating Update function
-	public function updateUser(){
+	public function updateUser($id,$name,$email,$password,$usertype){
+		// Setting the parameters to UpdateUser
+		$this->setUserId($id);
+		$this->setName($name);
+		$this->setEmail($email);
+		$this->setPassword($password);
+		$this->setUserType($usertype);
+		// Making the statement calling the query function
 		$sql = new SQL();
 		$statement = $sql->query("UPDATE fb_user SET user_name = :NAME, user_email = :EMAIL, user_password = :PASSWORD, user_type = :USERTYPE where user_id = :ID",
 			array(
@@ -29,7 +36,7 @@ class UserDAO extends User{
 				":PASSWORD"=>$this->getPassword(),
 				":USERTYPE"=>$this->getUserType()));
 	}
-	
+
 	// Creating Delete function
 	public  function deleteUser($id){
 		$this->setUserid($id);
@@ -43,5 +50,15 @@ class UserDAO extends User{
 		$statement = $sql->query("SELECT * FROM fb_user");
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
+	}
+	// Creating getInfoById function
+	function getInfoById(){
+		$id = $_GET['id'];
+		$sql = new SQL();
+		$statement = $sql->query("SELECT * FROM fb_user WHERE user_id = :ID",
+			array(":ID"=>$id)
+		);
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $result[0];
 	}
 }

@@ -9,7 +9,7 @@ class ProjectsDAO extends Projects{
 	// Making the create project
 	public function createProject(){
 		$sql = new SQL();
-		$statement = $sql->query("INSERT INTO fb_projects (project_name,project_content,project_featuredphoto,project_deliveryDate) 
+		$statement = $sql->query("INSERT INTO fb_projects (project_name,project_content,project_featuredphoto,project_deliveryDate)
 			VALUES (:NAME,:CONTENT,:FEATUREDPHOTO,:DELIVERYDATE)",
 			array(":NAME"=>$this->getName(),
 				":CONTENT"=>$this->getContent(),
@@ -39,7 +39,7 @@ class ProjectsDAO extends Projects{
 	public function deleteProject($id){
 		$this->setProjectid($id);
 		$sql = new SQL();
-		$statement = $sql->query("DELETE from fb_projects WHERE project_id = :ID", 
+		$statement = $sql->query("DELETE from fb_projects WHERE project_id = :ID",
 			array(":ID"=>$this->getProjectid()));
 	}
 

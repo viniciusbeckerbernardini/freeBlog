@@ -6,17 +6,17 @@
 // Creating Data Acess Object of Posts
 class PostsDAO extends Posts{
 	// Making create Posts
-	public function createPosts(){
+	public function createPost(){
 		$sql = new SQL();
 		$statement = $sql->query("INSERT INTO fb_posts (post_name,post_content,post_category)
 			VALUES (:NAME,:CONTENT,:POSTCATEGORY)",
 		array(":NAME"=>$this->getName(),
-          ":CONTENT"=>$this->getContent().
+          ":CONTENT"=>$this->getContent(),
           ":POSTCATEGORY"=>$this->getPostCategory())
 		);
 	}
-	// Making update projects
-	public function updatePosts($id,$name,$content,$postCategory){
+	// Making update Posts
+	public function updatePost($id,$name,$content,$postCategory){
 		$this->setPostid($id);
 		$this->setName($name);
 		$this->setContent($content);
@@ -28,11 +28,28 @@ class PostsDAO extends Posts{
 				  ":CATEGORY"=>$this->getPostCategory(),
 				  ":ID"=>$this->getPostId()));
 	}
-	// Making the delete category 
-	public function deleteCategory($id){
+	// Making list Post
+	public function listPost(){
+		$sql = new SQL();
+		$statement = $sql->query("SELECT * FROM fb_posts");
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+	// Making delete Post
+	public function deletePost($id){
 		$this->setPostid($id);
 		$sql = new SQL();
 		$statement = $sql->query("DELETE FROM fb_posts WHERE post_id = :ID",
 		array(":ID"=>getPostid()));
+	}
+	// Making getInfoById function
+	function getInfoById(){
+		$id = $_GET['id'];
+		$sql = new SQL();
+		$statement = $sql->query("SELECT * FROM fb_posts WHERE post_id = :ID",
+			array(":ID"=>$id)
+		);
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $result[0];
 	}
 }

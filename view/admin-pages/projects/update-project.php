@@ -1,14 +1,15 @@
-<?php 
+<?php
 // Requesting the config file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Requesting the header file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 // Getting the function getInfoById
-$p = new ProjectsDAO();
-$fieldsInfos = $p->getInfoById();
+$postId = $_GET['id'];
+$p = new PostsDAO();
+$result = $p->getInfoById($postsId);
 ?>
 <h2 class="center">Atualizar projeto</h2>
-<div class="row">	
+<div class="row">
 	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/projectController.php?operation=update" >
 		<div class="input-field col s4">
 			<input id="projectid" name="projectid" type="text" readonly="readonly" value="<?php echo $fieldsInfos['project_id']; ?>"  class="validate disabled">
@@ -23,7 +24,7 @@ $fieldsInfos = $p->getInfoById();
 			; ?>" class="datepicker">
 			<label for="deliverydate">Data de entrega</label>
 		</div>
-		<div class="col s12">	
+		<div class="col s12">
 			<label>Imagem de destaque</label>
 			<div class = "file-field input-field">
 				<div class="btn">
@@ -50,7 +51,6 @@ $fieldsInfos = $p->getInfoById();
 		</div>
 	</form>
 </div>
-<?php 
+<?php
 // Requesting the footer file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
-
