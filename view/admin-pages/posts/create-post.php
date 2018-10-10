@@ -4,6 +4,13 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SE
 // Requesting the header file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 ?>
+<?php
+// Bring all projects
+// Instancing the class CategoryDAO
+$c = new CategoryDAO();
+$results = $c->listCategory();
+// print_r($results);
+?>
 <h2 class="center">Criar postagem</h2>
 <div class="row">
 	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postsController.php?operation=create" >
@@ -11,23 +18,19 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIREC
 			<input id="postname" name="postname" type="text" class="validate">
 			<label for="postname">Título</label>
 		</div>
+		<div class="input-field col s6">
+			<select name="postcategory">
+				<?php foreach ($results as $result) { ?>
+					<option value="<?php echo $result['category_id'] ?>">
+						Categoria: <?php echo $result['category_name'] ?>
+					</option>
+				<?php } ?>
+			</select>
+		</div>
 		<div class="col s12">
 			<h4>Conteúdo</h4>
 			<textarea name="content" id="editor"></textarea>
-		</div>
-		<?php
-		// Bring all projects
-		// Instancing the class PDO
-		$c = new CategoryDAO();
-		$results = $c->listCategory();
-		// print_r($results);
-		?>
-    <div class="col s12">
-      <h4>Selecione a categoria da postagem</h4>
-      <select name="postcategory">
-        <option value="<?php echo $results['category_name'] ?>"></option>
-      </select>
-    </div>
+		</div>		
 		<div class="col s12">
 			<h4>Ações</h4>
 			<button class="btn waves-effect waves-light" type="submit">

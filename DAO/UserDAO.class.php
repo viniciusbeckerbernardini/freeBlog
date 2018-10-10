@@ -11,30 +11,29 @@ class UserDAO extends User{
 		$sql = new SQL();
 		$statement = $sql->query("INSERT INTO fb_user (user_name,user_email,user_password,user_type)
 			VALUES(:NAME,:EMAIL,:PASSWORD,:USERTYPE)",
-			array(":NOME"=>$this->getName(),
+			array(":NAME"=>$this->getName(),
 				":EMAIL"=>$this->getEmail(),
 				":PASSWORD"=>$this->getPassword(),
-				":USERTYPE"=>$this->getUserType()));
+				":USERTYPE"=>$this->getUsertype()));
 	}
-
 
 	// Creating Update function
 	public function updateUser($id,$name,$email,$password,$usertype){
 		// Setting the parameters to UpdateUser
-		$this->setUserId($id);
+		$this->setUserid($id);
 		$this->setName($name);
 		$this->setEmail($email);
 		$this->setPassword($password);
-		$this->setUserType($usertype);
+		$this->setUsertype($usertype);
 		// Making the statement calling the query function
 		$sql = new SQL();
 		$statement = $sql->query("UPDATE fb_user SET user_name = :NAME, user_email = :EMAIL, user_password = :PASSWORD, user_type = :USERTYPE where user_id = :ID",
 			array(
 				":ID" => $this->getUserId(),
-				":NOME"=>$this->getName(),
+				":NAME"=>$this->getName(),
 				":EMAIL"=>$this->getEmail(),
 				":PASSWORD"=>$this->getPassword(),
-				":USERTYPE"=>$this->getUserType()));
+				":USERTYPE"=>$this->getUsertype()));
 	}
 
 	// Creating Delete function
@@ -42,7 +41,7 @@ class UserDAO extends User{
 		$this->setUserid($id);
 		$sql = new SQL();
 		$statement = $sql->query("DELETE FROM fb_user where user_id = :ID",
-			array(":ID"=>$this->getUserId($id)));
+			array(":ID"=>$this->getUserid($id)));
 	}
 	// Creating list function
 	public function listUser(){

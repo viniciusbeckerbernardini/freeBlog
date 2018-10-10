@@ -1,8 +1,8 @@
 <?php 
 /**
+* Projects controller
 *@author Vinícius Becker Bernardini
 *@since 30/09/2018
-* Projects controller
 */
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');

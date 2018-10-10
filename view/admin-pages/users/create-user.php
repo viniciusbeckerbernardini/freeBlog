@@ -27,18 +27,6 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIREC
 			</select>
 			<label>Tipo de usuário</label>
 		</div>
-		<!-- <div class="col s12">	
-			<label>Avatar</label>
-			<div class = "file-field input-field">
-				<div class="btn">
-					<span>Enviar</span>
-					<input type="file" name="featuredphoto" enctype="multipart/form-data"/>
-				</div>
-				<div class = "file-path-wrapper">
-					<input class ="file-path validate" type ="text" placeholder="Upload file"/>
-				</div>
-			</div>
-		</div> -->
 		<div class="col s12">
 			<h4>Ações</h4>
 			<button class="btn waves-effect waves-light" type="submit">
