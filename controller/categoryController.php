@@ -49,4 +49,9 @@ switch ($operation){
 	echo '<br>';
 	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
 	break;
+	// If get invalid operation
+	default:
+	// Print error message
+	echo "Operação inválida";
+	break;
 }

@@ -25,7 +25,7 @@ class PostsDAO extends Posts{
 		$statement = $sql->query("UPDATE FB_POST SET post_name = :NAME , post_content = :CONTENT, post_category = :POSTCATEGORY WHERE post_id = :ID",
 			array(":NAME"=>$this->getName(),
 				  ":CONTENT"=>$this->getContent(),
-				  ":CATEGORY"=>$this->getPostCategory(),
+				  ":POSTCATEGORY"=>$this->getPostCategory(),
 				  ":ID"=>$this->getPostId()));
 	}
 	// Making list Post
@@ -40,7 +40,7 @@ class PostsDAO extends Posts{
 		$this->setPostid($id);
 		$sql = new SQL();
 		$statement = $sql->query("DELETE FROM FB_POST WHERE post_id = :ID",
-		array(":ID"=>getPostid()));
+		array(":ID"=>$this->getPostid()));
 	}
 	// Making getInfoById function
 	function getInfoById(){

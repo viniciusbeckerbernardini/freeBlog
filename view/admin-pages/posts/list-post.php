@@ -17,8 +17,9 @@ $results = $p->listPost();
 		<tr>
 			<th>ID da postagem</th>
 			<th>Título da postagem</th>
+			<th>Conteúdo da postagem</th>
 			<th>Categoria da postagem</th>
-      <th>Conteúdo da postagem<th>
+			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,13 +27,13 @@ $results = $p->listPost();
 			<tr>
 				<td><?php echo $result['post_id'] ?></td>
 				<td><?php echo $result['post_name'] ?></td>
-        <td><?php echo $result['post_content'] ?></td>
-        <td><?php echo $result['post_category'] ?></td>
+				<td><?php echo $result['post_content'] ?></td>
+				<td><?php echo $result['post_category'] ?></td>
 				<td>
-					<a href="update-posts.php?id=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light">
+					<a href="update-post.php?id=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light">
 						Atualizar
 					</a>
-					<a href="../../../controller/PostsController.php?operation=delete&postID=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light red">
+					<a href="../../../controller/postController.php?operation=delete&postID=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light red">
 						Deletar
 					</a>
 				</td>

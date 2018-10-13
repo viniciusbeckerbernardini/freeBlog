@@ -51,4 +51,13 @@ class CategoryDAO extends Category{
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $result[0];
 	}
+	// Creating the function to get the category information to update the post
+	function getInfoByIdtoUpdatePost($id){
+		$sql = new SQL();
+		$statement = $sql->query("SELECT * FROM FB_CATEGORY WHERE category_id = :ID",
+			array(":ID"=>$id)
+		);
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $result[0];
+	}
 }
