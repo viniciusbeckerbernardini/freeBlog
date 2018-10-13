@@ -9,7 +9,7 @@ class ProjectsDAO extends Projects{
 	// Making the create project
 	public function createProject(){
 		$sql = new SQL();
-		$statement = $sql->query("INSERT INTO fb_projects (project_name,project_content,project_featuredphoto,project_deliveryDate)
+		$statement = $sql->query("INSERT INTO FB_PROJECTS (project_name,project_content,project_featuredphoto,project_deliveryDate)
 			VALUES (:NAME,:CONTENT,:FEATUREDPHOTO,:DELIVERYDATE)",
 			array(":NAME"=>$this->getName(),
 				":CONTENT"=>$this->getContent(),
@@ -27,7 +27,7 @@ class ProjectsDAO extends Projects{
 		$this->setDeliverydate($deliverydate);
 		// Making the steatement calling the query function
 		$sql = new SQL();
-		$statement = $sql->query("UPDATE fb_projects SET project_name=:NAME, project_content=:CONTENT,project_featuredphoto=:FEATUREDPHOTO,project_deliverydate=:DELIVERYDATE WHERE project_id = :ID",
+		$statement = $sql->query("UPDATE FB_PROJECTS SET project_name=:NAME, project_content=:CONTENT,project_featuredphoto=:FEATUREDPHOTO,project_deliverydate=:DELIVERYDATE WHERE project_id = :ID",
 			array(":NAME"=>$this->getName(),
 				":CONTENT"=>$this->getContent(),
 				":FEATUREDPHOTO"=>$this->getFeaturedphoto(),
@@ -39,14 +39,14 @@ class ProjectsDAO extends Projects{
 	public function deleteProject($id){
 		$this->setProjectid($id);
 		$sql = new SQL();
-		$statement = $sql->query("DELETE from fb_projects WHERE project_id = :ID",
+		$statement = $sql->query("DELETE from FB_PROJECTS WHERE project_id = :ID",
 			array(":ID"=>$this->getProjectid()));
 	}
 
 	// Creating list function
 	public function listUser(){
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_projects");
+		$statement = $sql->query("SELECT * FROM FB_PROJECTS");
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
 	}
@@ -55,7 +55,7 @@ class ProjectsDAO extends Projects{
 	function getInfoById(){
 		$id = $_GET['id'];
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_projects WHERE project_id = :ID",
+		$statement = $sql->query("SELECT * FROM FB_PROJECTS WHERE project_id = :ID",
 			array(":ID"=>$id)
 		);
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);

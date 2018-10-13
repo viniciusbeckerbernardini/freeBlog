@@ -12,7 +12,10 @@ class Posts{
 	private $postCategory;
 
 	// Creating constructor
-	public function __construct(){
+	public function __construct($name = "",$content = "",$postCategory = ""){
+		$this->setName($name);
+		$this->setContent($content);
+		$this->setPostCategory($postCategory);
 	}
 	// Creating destructor
 	public function __destruct(){

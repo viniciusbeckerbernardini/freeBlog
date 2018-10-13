@@ -8,7 +8,7 @@ class CategoryDAO extends Category{
 	// Making create category
 	public function createCategory(){
 		$sql = new SQL();
-		$statement = $sql->query("INSERT INTO fb_category (category_name)
+		$statement = $sql->query("INSERT INTO FB_CATEGORY (category_name)
 			VALUES (:NAME)",
 			array(":NAME"=>$this->getName())
 		);
@@ -18,7 +18,7 @@ class CategoryDAO extends Category{
 		$this->setCategoryid($id);
 		$this->setName($name);
 		$sql = new SQL();
-		$statement = $sql->query("UPDATE fb_category SET category_name = :NAME
+		$statement = $sql->query("UPDATE FB_CATEGORY SET category_name = :NAME
 			WHERE category_id = :ID",
 			array(":NAME"=>$this->getName(),
 				":ID"=>$this->getCategoryid())
@@ -29,14 +29,14 @@ class CategoryDAO extends Category{
 	public function deleteCategory($id){
 		$this->setCategoryId($id);
 		$sql = new SQL();
-		$statement = $sql->query("DELETE FROM fb_category WHERE category_id = :ID ",
+		$statement = $sql->query("DELETE FROM FB_CATEGORY WHERE category_id = :ID ",
 			array(":ID"=>$this->getCategoryid()));
 	}
 
 	// Creating list function
 	public function listCategory(){
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_category");
+		$statement = $sql->query("SELECT * FROM FB_CATEGORY");
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
 	}
@@ -45,7 +45,7 @@ class CategoryDAO extends Category{
 	function getInfoById(){
 		$id = $_GET['id'];
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_category WHERE category_id = :ID",
+		$statement = $sql->query("SELECT * FROM FB_CATEGORY WHERE category_id = :ID",
 			array(":ID"=>$id)
 		);
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);

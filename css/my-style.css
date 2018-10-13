@@ -18,3 +18,7 @@ h2{
 	width:100%;
 	z-index: 9999;
 }
+
+.row {
+	padding-bottom: 90px;
+}

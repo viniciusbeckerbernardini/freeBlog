@@ -13,7 +13,7 @@ $results = $c->listCategory();
 ?>
 <h2 class="center">Criar postagem</h2>
 <div class="row">
-	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postsController.php?operation=create" >
+	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postController.php?operation=create" >
 		<div class="input-field col s6">
 			<input id="postname" name="postname" type="text" class="validate">
 			<label for="postname">Título</label>
@@ -29,7 +29,7 @@ $results = $c->listCategory();
 		</div>
 		<div class="col s12">
 			<h4>Conteúdo</h4>
-			<textarea name="content" id="editor"></textarea>
+			<textarea name="postcontent" id="editor"></textarea>
 		</div>		
 		<div class="col s12">
 			<h4>Ações</h4>
