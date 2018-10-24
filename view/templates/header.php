@@ -7,8 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	<!-- End of metas -->
 	<!-- Loading the stylesheet -->
-	<link rel="stylesheet" type="text/css" href="../../../css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="../../../css/my-style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://localhost/freeBlog/view/library/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost/freeBlog/view/library/css/my-style.css"> -->
+	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/my-style.css">
 	<!-- End of loading of stylesheet -->
 </head>
 <body>
