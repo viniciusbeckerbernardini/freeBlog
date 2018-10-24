@@ -34,4 +34,10 @@ function loadClass($className){
 }
 // Using the spl function to register the function below
 spl_autoload_register('loadClass');
+// Rotine to get the site name 
+function siteURL(){
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'].'/freeBlog';
+    echo $protocol.$domainName;
+}
 ?>
