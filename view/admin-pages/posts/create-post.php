@@ -1,6 +1,8 @@
 <?php
 // Requesting the config file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+// Checking if is a authenticate user
+if(verifyAuthUser()){
 // Requesting the header file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 ?>

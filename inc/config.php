@@ -41,7 +41,8 @@ function siteURL(){
     echo $protocol.$domainName;
 }
 
-function verifyAuthUser($isAuth){
+function verifyAuthUser(){
+	$isAuth = $_SESSION['authUser'] == "true";
 	if($isAuth == "true"){
 		return true;
 	}else{
