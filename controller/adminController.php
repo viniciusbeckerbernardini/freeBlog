@@ -26,7 +26,7 @@ switch ($operation) {
 	break;
 	
 	case 'logout';
-
+		header("Location: ".siteURL().'/freeBlog/view/admin-pages/admin-login.php');
 	break;
 	default:
 		# code...

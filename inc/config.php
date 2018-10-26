@@ -40,4 +40,12 @@ function siteURL(){
     $domainName = $_SERVER['HTTP_HOST'].'/freeBlog';
     echo $protocol.$domainName;
 }
+
+function verifyAuthUser($isAuth){
+	if($isAuth == "true"){
+		return true;
+	}else{
+		return false;
+	}
+}
 ?>
