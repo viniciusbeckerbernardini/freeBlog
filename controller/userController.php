@@ -14,9 +14,13 @@ switch ($operation) {
 	case 'create':
 	// Getting the fields values using the $_POST
 	$name = $_POST['username'];
+	echo $name;
 	$email = $_POST['useremail'];
+	echo $email;
 	$password = $_POST['userpassword'];
+	echo $password;
 	$type = $_POST['usertype'];	
+	echo $type;
 	// Instancing the UserDAO class, passing the values through the __construct.
 	$u = new UserDAO($name,$email,$password,$type);
 	// Acessing the create user method

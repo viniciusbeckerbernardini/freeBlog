@@ -1,17 +1,19 @@
 <?php 
 // Requesting the config file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+if($_SESSION['authUser'] == "true"){
 // Requesting the header file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 ?>
 <h2 class="center">Categorias</h2>
-<?php 
+<?php
 // Bring all projects
 // Instancing the class PDO
 $c = new CategoryDAO();
 $results = $c->listCategory();
 // print_r($results);
 ?>
+<a class="btn waves-effect waves-light" href="create-category.php">Criar categoria</a>
 <table class="table-responsive">
 	<thead>
 		<tr>
@@ -40,4 +42,7 @@ $results = $c->listCategory();
 <?php 
 // Requesting the footer file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+}else{
+	header('Location:'.siteURL().'/view/admin-pages/admin-login.php');
+}
 

@@ -33,7 +33,7 @@ CREATE TABLE FB_USER(
      user_id int not null auto_increment,
      user_name varchar(64) not null,
      user_email varchar(64) not null,
-     user_thumbnail longtext not null,
+     user_thumbnail longtext null,
      user_password varchar(256) not null,
      user_type enum ('assinante','administrador') not null,
      primary key (user_id)

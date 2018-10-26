@@ -12,6 +12,7 @@ $p = new ProjectsDAO();
 // Getting the data using the listUser Function
 $results = $p->listUser();
 ?>
+<a class="btn waves-effect waves-light" href="create-project.php">Criar projeto</a>
 <table class="table-responsive">
 	<thead>
 		<tr>

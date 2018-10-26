@@ -12,6 +12,7 @@ $p = new PostsDAO();
 $results = $p->listPost();
 // print_r($results);
 ?>
+<a class="btn waves-effect waves-light" href="create-post.php">Criar post</a>
 <table class="table-responsive">
 	<thead>
 		<tr>

@@ -12,6 +12,7 @@ $c = new UserDAO();
 // Getting an array with results of the search
 $results = $c->listUser();
 ?>
+<a class="btn waves-effect waves-light" href="create-user.php">Criar usuário</a>
 <table class="table-responsive">
 	<thead>
 		<tr>

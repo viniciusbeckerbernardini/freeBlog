@@ -60,4 +60,20 @@ class UserDAO extends User{
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $result[0];
 	}
+	// Create login function
+	function login($email,$password){
+		$sql = new SQL();
+		$statement = $sql->query("SELECT * FROM fb_user where user_email = :EMAIL and user_password = :PASSWORD",
+		array(
+		':EMAIL'=>$email,
+		':PASSWORD'=>$password
+		));
+		$result = $statement;
+		// var_dump($result->fetchAll(PDO::FETCH_ASSOC));
+		if($result->fetchAll(PDO::FETCH_ASSOC) != null){
+			return $_SESSION['authUser'] = "true";
+		}else{
+			return $_SESSION['authUser'] = "false";
+		}
+	}
 }

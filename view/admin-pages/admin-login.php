@@ -4,17 +4,17 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_S
 // Requesting the header file
 require_once('..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 ?>
-<form action="<?php siteUrl(); ?>/controller/adminController.php">
+<form method="post" action="<?php siteUrl(); ?>/controller/adminController.php?operation=login">
 	<div class="row">
 		<div class="col s12 center">	
 			<div class="row">
 				<h2 class="center">Painel administrativo</h2>
 				<div class="input-field col s6">
-					<input id="email" type="email" class="validate">
+					<input id="email" type="email" name="email" class="validate">
 					<label for="email">Email</label>
 				</div>
 				<div class="input-field col s6">
-					<input id="password" type="password" class="validate">
+					<input id="password" type="password" name="password" class="validate">
 					<label for="password">Password</label>
 				</div>
 				<div class="input-field col s12">	
