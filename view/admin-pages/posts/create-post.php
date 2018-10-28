@@ -48,3 +48,6 @@ $results = $c->listCategory();
 <?php
 // Requesting the footer file
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+}else{
+	header('Location:'.siteURL().'/freeBlog/view/admin-pages/admin-login.php');
+}
