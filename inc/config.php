@@ -37,14 +37,18 @@ spl_autoload_register('loadClass');
 
 // Rotine to get the site name 
 function siteURL(){
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-    $domainName = $_SERVER['HTTP_HOST'].'/freeBlog';
-    echo $protocol.$domainName;
+	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+	$domainName = $_SERVER['HTTP_HOST'].'/freeBlog';
+	echo $protocol.$domainName;
 }
 
 function verifyAuthUser(){
 	session_regenerate_id();
-	$isAuth = $_SESSION['authUser'] == "true";
+	if(isset($_SESSION['authUser'])){
+		$isAuth = $_SESSION['authUser'];
+	}else{
+		$isAuth = "false";	
+	}
 	if($isAuth == "true"){
 		return true;
 	}else{
