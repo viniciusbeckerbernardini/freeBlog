@@ -3,6 +3,7 @@
 * Projects controller
 *@author Vinícius Becker Bernardini
 *@since 30/09/2018
+*@updated for filter_input in 28/10/2018
 */
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
@@ -11,9 +12,9 @@ $operation = $_GET['operation'];
 switch ($operation) {
 	case 'create':
 	// Getting the values of the form using $_POST
-	$name = $_POST['projectname'];
-	$deliverydate = $_POST['deliverydate'];
-	$content = $_POST['content'];
+	$name = filter_input(INPUT_POST, 'projectname');
+	$deliverydate = filter_input(INPUT_POST, 'deliverydate');
+	$content = filter_input(INPUT_POST, 'content');
 	$nameForPhoto = str_replace(' ','_',$name);
 	$featuredPhoto = $_FILES['featuredphoto'];
 
@@ -44,18 +45,18 @@ switch ($operation) {
 		// Using the function createProject to create the register
 		$p->createProject();
 		
-		// Printing the result
-		echo "<h2>Projeto criado!</h2>";
-		echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	// Redirecting to the panel and informing the project has been created
+	// Info : cp = created project
+		header("Location: ".siteURL().'/freeBlog/view/admin-pages/projects/list-projects.php?info=cpj');
 	}
 	break;
 
 	case 'update':
 	// Getting the values of the form using $_POST
-	$id = (int)$_POST['projectid'];
-	$name = $_POST['projectname'];
-	$deliverydate = $_POST['deliverydate'];
-	$content = $_POST['content'];
+	$id = filter_input(INPUT_POST, 'projectid');
+	$name = filter_input(INPUT_POST, 'projectname');
+	$deliverydate = filter_input(INPUT_POST, 'deliverydate');
+	$content = filter_input(INPUT_POST, 'content');
 	$nameForPhoto = str_replace(' ','_',$name);
 	$featuredPhoto = $_FILES['featuredphoto'];
 
@@ -91,24 +92,23 @@ switch ($operation) {
 		$p = new ProjectsDAO();
 		// Using the function createProject to create the register
 		$p->updateProject($id,$name,$content,$featuredPhotoPath,$deliverydate);
-		
-		// Printing the result
-		echo "<h2>Projeto atualizado!</h2>";
-		echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	// Redirecting to the panel and informing the project has been updated
+	// Info : cp = updated project
+		header("Location: ".siteURL().'/freeBlog/view/admin-pages/projects/list-projects.php?info=upj');
 	}
 	break;
 
 	case 'delete':
 	// Getting the values of the url using $_GET
-	$projectID = $_GET['projectID'];
+	$projectID = filter_input(INPUT_GET,'projectID');
 	// Instancing the ProjectsDAO
 	$p = new ProjectsDAO();
 	// Setting the id of the project
 	// Calling the delete function
 	$p->deleteProject($projectID);
-	// Printing the result
-	echo "<h2>Projeto deletado!</h2>";
-	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	// Redirecting to the panel and informing the project has been deleted
+	// Info : cp = deleted project
+	header("Location: ".siteURL().'/freeBlog/view/admin-pages/projects/list-projects.php?info=dpj');
 	break;
 	// If get invalid operation
 	default:

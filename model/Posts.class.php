@@ -1,7 +1,7 @@
 <?php
 /**
 *@class Posts
-*@author Leonardo Pereira Oliveira
+*@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 
 class Posts{

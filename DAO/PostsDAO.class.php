@@ -1,7 +1,7 @@
 <?php
 /**
 *@classname PostsDAO
-*@author Leonardo Pereira Oliveira
+*@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 // Creating Data Acess Object of Posts
 class PostsDAO extends Posts{

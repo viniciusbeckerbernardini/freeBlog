@@ -13,49 +13,45 @@ switch ($operation) {
 	// Case create to create the user
 	case 'create':
 	// Getting the fields values using the $_POST
-	$name = $_POST['username'];
-	echo $name;
-	$email = $_POST['useremail'];
-	echo $email;
-	$password = $_POST['userpassword'];
-	echo $password;
-	$type = $_POST['usertype'];	
-	echo $type;
+	$name = filter_input(INPUT_POST, 'username');
+	$email = filter_input(INPUT_POST, 'useremail');
+	$password = filter_input(INPUT_POST, 'userpassword');
+	$type = filter_input(INPUT_POST, 'usertype');
 	// Instancing the UserDAO class, passing the values through the __construct.
 	$u = new UserDAO($name,$email,$password,$type);
 	// Acessing the create user method
 	$u->createUser();
-	// Printing the result
-	echo "<h2>Usuário criado!</h2>";
-	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	// Redirecting to the panel and informing the user has been created
+	// Info : cu = create user
+	header("Location: ".siteURL().'/freeBlog/view/admin-pages/users/list-users.php?info=cu');
 	break;
 	// Case update to update the user
 	case 'update':
 	// Getting the fields values using the $_POST
-	$id = $_POST['userid'];
-	$name = $_POST['username'];
-	$email = $_POST['useremail'];
-	$password = $_POST['userpassword'];
-	$type = $_POST['usertype'];
+	$id = filter_input(INPUT_POST,'userid');
+	$name = filter_input(INPUT_POST, 'username');
+	$email = filter_input(INPUT_POST, 'useremail');
+	$password = filter_input(INPUT_POST, 'userpassword');
+	$type = filter_input(INPUT_POST, 'usertype');
 	// Instancing the UserDAO class
 	$u = new UserDAO();
 	// Acessing the update user method
 	$u->updateUser($id,$name,$email,$password,$type);
-	// Printing the result
-	echo "<h2>Usuário atualizado!</h2>";
-	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	// Redirecting to the panel and informing the user has been updated
+	// Info : uu  = updated user
+	header("Location: ".siteURL().'/freeBlog/view/admin-pages/users/list-users.php?info=uu');
 	break;
 	
 	case 'delete':
 	// Getting the id of the user using the superglobal $_GET
-	$id = $_GET['userID'];
+	$id = filter_input(INPUT_GET, 'userID');
 	// Instancing the UserDAO class
 	$u = new UserDAO();
 	// Acessing the deleteUser method
 	$u->deleteUser($id);
-	// Printing the result
-	echo "<h2>Usuário deletado!</h2>";
-	echo '<h4><a href="javascript:window.history.go(-1)">Voltar</a>';
+	// Redirecting to the panel and informing the user has been deleted
+	// Info : du  = delete user
+	header("Location: ".siteURL().'/freeBlog/view/admin-pages/users/list-users.php?info=du');
 	break;
 	// If get invalid operation	
 	default:

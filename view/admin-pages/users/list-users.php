@@ -13,6 +13,15 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIREC
 $c = new UserDAO();
 // Getting an array with results of the search
 $results = $c->listUser();
+// Getting the information the post has been deleted,updated,created.
+$message = filter_input(INPUT_GET,'info');
+if($message == 'cu'){
+	echo "<script>alert('Usuário criado!');</script>";
+}else if($message == 'uu'){
+	echo "<script>alert('Usuário atualizado!');</script>";
+}else if($message == 'du'){
+	echo "<script>alert('Usuário deletado!');</script>";
+}
 ?>
 <a class="btn waves-effect waves-light" href="create-user.php">Criar usuário</a>
 <table class="table-responsive">

@@ -3,16 +3,25 @@
 require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Checking if is a authenticate user
 if(verifyAuthUser()){
-// Requesting the header file
+	// Requesting the header file
 	require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 	?>
 	<h2 class="center">Projetos</h2>
 	<?php 
-// Bring all projects
-// Instancing the class ProjectsDAO
+	// Bring all projects
+	// Instancing the class ProjectsDAO
 	$p = new ProjectsDAO();
-// Getting the data using the listUser Function
+	// Getting the data using the listUser Function
 	$results = $p->listUser();
+	// Getting the information the post has been deleted,updated,created.
+	$message = filter_input(INPUT_GET,'info');
+	if($message == 'cpj'){
+		echo "<script>alert('Projeto criado!');</script>";
+	}else if($message == 'upj'){
+		echo "<script>alert('Projeto atualizado!');</script>";
+	}else if($message == 'dpj'){
+		echo "<script>alert('Projeto deletado!');</script>";
+	}
 	?>
 	<a class="btn waves-effect waves-light" href="create-project.php">Criar projeto</a>
 	<table class="table-responsive">

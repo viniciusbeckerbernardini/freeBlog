@@ -12,7 +12,17 @@ require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIREC
 $c = new CategoryDAO();
 $results = $c->listCategory();
 // print_r($results);
+// Getting the information the post has been deleted,updated,created.
+$message = filter_input(INPUT_GET,'info');
+if($message == 'cc'){
+	echo "<script>alert('Categoria criada!');</script>";
+}else if($message == 'uc'){
+	echo "<script>alert('Categoria atualizada!');</script>";
+}else if($message == 'dc'){
+	echo "<script>alert('Categoria deletada!');</script>";
+}
 ?>
+
 <a class="btn waves-effect waves-light" href="create-category.php">Criar categoria</a>
 <table class="table-responsive">
 	<thead>

@@ -17,7 +17,6 @@ switch ($operation) {
 	$password = $_POST['password']; 
 	$u = new UserDAO();
 	$result = $u->login($login,$password);
-	var_dump($result);
 	if($result == "false"){
 		header("Location: ".siteURL().'/freeBlog/view/admin-pages/admin-login.php');
 	}else{

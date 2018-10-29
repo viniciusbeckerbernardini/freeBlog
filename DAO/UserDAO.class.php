@@ -1,7 +1,7 @@
 <?php
 /**
 *@classname UserDAO
-*@author Leonardo Pereira Oliveira
+*@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 // Creating Data Acess Object of User
 class UserDAO extends User{

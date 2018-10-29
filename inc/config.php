@@ -34,6 +34,7 @@ function loadClass($className){
 }
 // Using the spl function to register the function below
 spl_autoload_register('loadClass');
+
 // Rotine to get the site name 
 function siteURL(){
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
@@ -42,6 +43,7 @@ function siteURL(){
 }
 
 function verifyAuthUser(){
+	session_regenerate_id();
 	$isAuth = $_SESSION['authUser'] == "true";
 	if($isAuth == "true"){
 		return true;
