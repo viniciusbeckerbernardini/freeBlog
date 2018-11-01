@@ -9,7 +9,7 @@ class UserDAO extends User{
 	// Creating Register function
 	public function createUser(){
 		$sql = new SQL();
-		$statement = $sql->query("INSERT INTO fb_user (user_name,user_email,user_password,user_type)
+		$statement = $sql->query("INSERT INTO FB_USER (user_name,user_email,user_password,user_type)
 			VALUES(:NAME,:EMAIL,:PASSWORD,:USERTYPE)",
 			array(":NAME"=>$this->getName(),
 				":EMAIL"=>$this->getEmail(),
@@ -27,7 +27,7 @@ class UserDAO extends User{
 		$this->setUsertype($usertype);
 		// Making the statement calling the query function
 		$sql = new SQL();
-		$statement = $sql->query("UPDATE fb_user SET user_name = :NAME, user_email = :EMAIL, user_password = :PASSWORD, user_type = :USERTYPE where user_id = :ID",
+		$statement = $sql->query("UPDATE FB_USER SET user_name = :NAME, user_email = :EMAIL, user_password = :PASSWORD, user_type = :USERTYPE where user_id = :ID",
 			array(
 				":ID" => $this->getUserId(),
 				":NAME"=>$this->getName(),
@@ -40,13 +40,13 @@ class UserDAO extends User{
 	public  function deleteUser($id){
 		$this->setUserid($id);
 		$sql = new SQL();
-		$statement = $sql->query("DELETE FROM fb_user where user_id = :ID",
+		$statement = $sql->query("DELETE FROM FB_USER where user_id = :ID",
 			array(":ID"=>$this->getUserid($id)));
 	}
 	// Creating list function
 	public function listUser(){
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_user");
+		$statement = $sql->query("SELECT * FROM FB_USER");
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
 	}
@@ -54,7 +54,7 @@ class UserDAO extends User{
 	function getInfoById(){
 		$id = $_GET['id'];
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_user WHERE user_id = :ID",
+		$statement = $sql->query("SELECT * FROM FB_USER WHERE user_id = :ID",
 			array(":ID"=>$id)
 		);
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -63,7 +63,7 @@ class UserDAO extends User{
 	// Create login function
 	function login($email,$password){
 		$sql = new SQL();
-		$statement = $sql->query("SELECT * FROM fb_user where user_email = :EMAIL and user_password = :PASSWORD",
+		$statement = $sql->query("SELECT * FROM FB_USER where user_email = :EMAIL and user_password = :PASSWORD",
 		array(
 		':EMAIL'=>$email,
 		':PASSWORD'=>$password
