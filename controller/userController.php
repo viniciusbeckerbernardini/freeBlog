@@ -15,7 +15,7 @@ switch ($operation) {
 	// Getting the fields values using the $_POST
 	$name = filter_input(INPUT_POST, 'username');
 	$email = filter_input(INPUT_POST, 'useremail');
-	$password = filter_input(INPUT_POST, 'userpassword');
+	$password = hash_hmac('sha256', filter_input(INPUT_POST, 'userpassword'), 'secret');
 	$type = filter_input(INPUT_POST, 'usertype');
 	// Instancing the UserDAO class, passing the values through the __construct.
 	$u = new UserDAO($name,$email,$password,$type);

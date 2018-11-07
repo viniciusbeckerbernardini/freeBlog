@@ -66,8 +66,9 @@ class UserDAO extends User{
 		$statement = $sql->query("SELECT * FROM FB_USER where user_email = :EMAIL and user_password = :PASSWORD",
 		array(
 		':EMAIL'=>$email,
-		':PASSWORD'=>$password
+		':PASSWORD'=>hash_hmac('sha256', $password, 'secret')
 		));
+
 		$result = $statement;
 		// var_dump($result->fetchAll(PDO::FETCH_ASSOC));
 		if($result->fetchAll(PDO::FETCH_ASSOC) != null){
