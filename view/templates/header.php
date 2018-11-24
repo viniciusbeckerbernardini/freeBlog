@@ -16,7 +16,7 @@
 </head>
 <body>
 	<header>
-		<nav>
+		<nav class="menu-desktop">
 			<div class="nav-wrapper turquoise">
 				<div class="container">
 					<a href="#" class="brand-logo">freeBlog</a>
@@ -31,9 +31,9 @@
 				</div>
 			</div>
 		</nav>
-			<h2 class="center">FreeBlog</h2>	
-			<nav>
+			<nav class="menu-mobile turquoise">
 				<ul id="slide-out" class="sidenav">
+					<h5 class="center title-menu">FreeBlog menu</h5>
 					<?php if(verifyAuthUser()): ?>
 						<li><a class="waves-effect" href="<?php siteURL(); ?>/view/admin-pages/admin-panel.php">Painel de controle</a></li>
 					<?php endif; ?>

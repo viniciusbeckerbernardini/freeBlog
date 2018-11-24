@@ -80,7 +80,28 @@ div#main-post {
     margin-top: 50px;
 }
 
+.menu-desktop{
+    display: block;
+}
+
+.menu-mobile{
+    display: none;
+}
+
+
 @media screen and (max-width:768px){
+
+    .menu-desktop{
+        display: none;
+    }
+
+    .menu-mobile{
+        display: block;
+    }
+
+    .title-menu{
+        color:#000;
+    }
 
     #secundary-post-div-1{
         margin-top: 20px;
