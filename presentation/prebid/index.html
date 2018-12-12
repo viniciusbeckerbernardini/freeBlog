@@ -1,0 +1,100 @@
+Edit in JSFiddle
+HTML
+Result
+<html>
+
+<head>
+    <script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
+    <script async src="//acdn.adnxs.com/prebid/not-for-prod/1/prebid.js"></script>
+    <script>
+        	// Essa variável define um array de tamanhos que o banner poderá imprimir
+            var sizes = [
+            [300, 250],
+                // Adicionando um HB
+                [300,600],
+                // BB
+                [970,250]
+                ];
+            // Mudando de var para const para otimizar o código
+            // Tempo máximo para carregar o prebid
+            const PREBID_TIMEOUT = 1000;
+            // Algo relacionado a falha 
+            const FAILSAFE_TIMEOUT = 3000;
+
+            var adUnits = [{
+                code: 'div-1',
+                mediaTypes: {
+                    banner: {
+                        sizes: sizes
+                    }
+                },
+                bids: [{}]
+            }];
+
+            // ======== DO NOT EDIT BELOW THIS LINE =========== //
+            // Variável googletag recebe google tag? uma classe? ou objeto? || objeto? o que vir primeiro?
+            var googletag = googletag || {};
+            // Aqui parece ser um objeto porque tá acessando o cmd dentro do googletag (ta pedindo pra fazer isso, ou um array).
+            // o || é pra caso o cmd esteja vazio ele só envia um array?
+            googletag.cmd = googletag.cmd || [];
+            // Aqui tá fazendo um push dentro do array
+            googletag.cmd.push(function() {
+            	// Preciso estuar essas funções
+                googletag.pubads().disableInitialLoad();
+            });
+            // Mesma coisa, recebe o objeto pbjs ou um vazio
+            var pbjs = pbjs || {};
+            // Array que
+            pbjs.que = pbjs.que || [];
+            // e faz o push novamente
+            pbjs.que.push(function() {
+            	// Aqui ele ta adicionando as unidades que definimos lá em cima 
+                pbjs.addAdUnits(adUnits);
+                // Aquui ta fazendo a requisição do servidor
+                pbjs.requestBids({
+                	// Isso é um retorno, um callback 
+                    bidsBackHandler: initAdserver,
+                    // Defini o tempo maximo que indicamos na constante
+                    timeout: PREBID_TIMEOUT
+                });
+            });
+
+            function initAdserver() {
+                if (pbjs.initAdserverSet) return;
+                pbjs.initAdserverSet = true; 
+                googletag.cmd.push(function() {
+                    pbjs.que.push(function() {
+                        pbjs.setTargetingForGPTAsync();
+                        googletag.pubads().refresh();
+                    });
+                });
+            }
+            
+            // in case PBJS doesn't load
+            setTimeout(function() {
+                initAdserver();
+            }, FAILSAFE_TIMEOUT);
+
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/21620903742/Independente/AF_P01', [[728, 90], [320, 100], [970, 90], [970, 250]], 'div-gpt-ad-1542133514817-0').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <h2>Basic Prebid.js Example</h2>
+        <h5>Div-1</h5>
+        <div id='div-gpt-ad-1542133514817-0'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1542133514817-0');
+                });
+            </script>
+        </div>
+
+    </body>
+
+    </html>

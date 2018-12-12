@@ -1,8 +1,8 @@
 <?php 
 // Requesting the config file
-require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 // Requesting the header file
-require_once('..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
+require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 ?>
 <form method="post" action="<?php siteUrl(); ?>/controller/adminController.php?operation=login">
 	<div class="row">
@@ -34,5 +34,5 @@ require_once('..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.ph
 
 <?php 	
 // Requesting the footer file
-require_once('..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 

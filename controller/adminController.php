@@ -18,14 +18,15 @@ switch ($operation) {
 	$u = new UserDAO();
 	$result = $u->login($login,$password);
 	if($result == "false"){
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/admin-login.php');
+		header("Location: ".siteURL().'/admin');
 	}else{
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/admin-panel.php');
+		header("Location: ".siteURL().'/admin/panel');
 	}
 	break;
 	
 	case 'logout';
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/admin-login.php');
+		// session_destroy();
+		header("Location: ".siteURL().'/view/admin');
 	break;
 	default:
 		# code...

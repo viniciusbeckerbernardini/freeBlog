@@ -30,7 +30,7 @@ spl_autoload_register('loadClass');
 // Rotine to get the site name 
 function siteURL(){
 	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-	$domainName = $_SERVER['HTTP_HOST'].'/freeBlog';
+	$domainName = $_SERVER['HTTP_HOST'];
 	echo $protocol.$domainName;
 }
 // Function to verify is the user is authenticate
@@ -46,4 +46,42 @@ function verifyAuthUser(){
 	}else{
 		return false;
 	}
+}
+// Route function to the pages
+function router(){
+	// GET the uri of the site
+	$uri = $_SERVER['REQUEST_URI'];
+	// GET the method of the site
+	$method = $_SERVER['REQUEST_METHOD'];
+	// If is a get method requested
+	if($method == "GET"){
+		switch($uri){
+			// Root
+			case '/':
+			require_once("view/index.php");
+			break;
+			// Admin login
+			case "/admin":
+			require_once("view/admin-pages/admin-login.php");
+			break;
+			// Admin panel
+			case "/admin/panel":
+			require_once("view/admin-pages/admin-panel.php");
+			break;
+			// Blog
+			case "/blog":
+			require_once("view/blog.php");
+			break;
+			// Create of the archives
+			case "/create/category":
+			require_once("view/admin-pages/categories/create-category.php");
+			break;
+			// Error page
+			default:				
+			include("view/404.php");
+			break;
+		}
+
+	}	
+	
 }
