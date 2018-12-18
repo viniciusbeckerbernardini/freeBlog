@@ -23,6 +23,7 @@ require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.
 					</button>
 				</div>	
 				<div class="input-field col s12">	
+					<br>
 					<a href="#" onclick="alert('Paciência');">
 						Esqueceu sua senha?
 					</a>

@@ -23,8 +23,8 @@ $results = $c->listCategory();
 		<div class="input-field col s6">
 			<select name="postcategory">
 				<?php foreach ($results as $result) { ?>
-					<option value="<?php echo $result['category_id'] ?>">
-						Categoria: <?php echo $result['category_name'] ?>
+					<option value="<?php echo $result['category_id']; ?>">
+						Categoria: <?php echo $result['category_name']; ?>
 					</option>
 				<?php } ?>
 			</select>

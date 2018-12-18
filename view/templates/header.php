@@ -7,19 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	<!-- End of metas -->
 	<!-- Loading the stylesheet -->
-	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/materialize.min.css">
-	<!-- Loading the materialize icons -->
+	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
 	<!-- End of loading the materialize icons -->
 	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/my-style.css">
 	<!-- End of loading of stylesheet -->
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-			google_ad_client: "ca-pub-8235132497598658",
-			enable_page_level_ads: true
-		});
-	</script>
 </head>
 <body>
 	<header>

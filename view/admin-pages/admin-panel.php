@@ -51,7 +51,7 @@ if(verifyAuthUser()){
 	</div>
 	<?php
 	// Requesting the footer file
-	require_once('..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
 	header('Location:'.siteURL().'/admin');
 }

@@ -8,7 +8,7 @@ class SQL extends PDO{
 	// Creating the attributes 
 	private $conn;
 	// Extending the pdo here to connect in the database when we instance the class
-	public function __construct($host="localhost",$dbname = "freeBlog",$user="root",$password=""){
+	public function __construct($host="localhost",$dbname="freeBlog",$user="root",$password=""){
 		$this->conn = new PDO("mysql:host=$host;dbname=$dbname","$user","$password");
 	}
 	// Create a method to setParameters to make a database query

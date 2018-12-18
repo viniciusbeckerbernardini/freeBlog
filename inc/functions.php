@@ -76,6 +76,9 @@ function router(){
 			case "/create/category":
 			require_once("view/admin-pages/categories/create-category.php");
 			break;
+			case "/list/category":
+			require_once("view/admin-pages/categories/list-categories.php");	
+			break;
 			// Error page
 			default:				
 			include("view/404.php");
