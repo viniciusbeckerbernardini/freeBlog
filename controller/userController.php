@@ -23,7 +23,7 @@ switch ($operation) {
 	$u->createUser();
 	// Redirecting to the panel and informing the user has been created
 	// Info : cu = create user
-	header("Location: ".siteURL().'/freeBlog/view/admin-pages/users/list-users.php?info=cu');
+	header("Location: ".siteURL().'/list/user?info=cu');
 	break;
 	// Case update to update the user
 	case 'update':
@@ -39,7 +39,7 @@ switch ($operation) {
 	$u->updateUser($id,$name,$email,$password,$type);
 	// Redirecting to the panel and informing the user has been updated
 	// Info : uu  = updated user
-	header("Location: ".siteURL().'/freeBlog/view/admin-pages/users/list-users.php?info=uu');
+	header("Location: ".siteURL().'/list/user?info=uu');
 	break;
 	
 	case 'delete':
@@ -51,7 +51,7 @@ switch ($operation) {
 	$u->deleteUser($id);
 	// Redirecting to the panel and informing the user has been deleted
 	// Info : du  = delete user
-	header("Location: ".siteURL().'/freeBlog/view/admin-pages/users/list-users.php?info=du');
+	header("Location: ".siteURL().'/list/user?info=du');
 	break;
 	// If get invalid operation	
 	default:

@@ -21,30 +21,30 @@ if(verifyAuthUser()){
 			<div class="col s6">
 				<div class="collection">
 					<h6 class="center">Posts</h6>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/posts/create-post.php" class="collection-item">Criar post</a>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/posts/list-post.php" class="collection-item">Listar posts</a>
+					<a href="<?php echo siteURL(); ?>/create/post" class="collection-item">Criar post</a>
+					<a href="<?php echo siteURL(); ?>/list/post" class="collection-item">Listar posts</a>
 				</div>
 			</div>
 			<div class="col s6">
 				<div class="collection">
 					<h6 class="center">Categorias</h6>
 					<a href="<?php echo siteURL(); ?>/create/category" class="collection-item">Criar categoria</a>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/categories/list-category.php" class="collection-item">Listar categorias</a>
+					<a href="<?php echo siteURL(); ?>/list/category" class="collection-item">Listar categorias</a>
 				</div>
 			</div>
 			<div class="col s6">
 
 				<div class="collection">
 					<h6 class="center">Projetos</h6>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/projects/create-project.php" class="collection-item">Criar projeto</a>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/projects/list-projects.php" class="collection-item">Listar projetos</a>
+					<a href="<?php echo siteURL(); ?>/create/project" class="collection-item">Criar projeto</a>
+					<a href="<?php echo siteURL(); ?>/list/project" class="collection-item">Listar projetos</a>
 				</div>
 			</div>
 			<div class="col s6">
 				<div class="collection">
 					<h6 class="center">Usuários</h6>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/users/create-user.php" class="collection-item">Criar usuário</a>
-					<a href="<?php echo siteURL(); ?>/view/admin-pages/users/list-users.php" class="collection-item">Listar usuários</a>
+					<a href="<?php echo siteURL(); ?>/create/user" class="collection-item">Criar usuário</a>
+					<a href="<?php echo siteURL(); ?>/list/user" class="collection-item">Listar usuários</a>
 				</div>
 			</div> 
 		</div>	

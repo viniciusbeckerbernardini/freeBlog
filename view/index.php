@@ -6,10 +6,6 @@ require_once('templates'.DIRECTORY_SEPARATOR.'header.php');
 // Searching the posts
 $p = new PostsDAO();
 $posts = $p->listPost();
-$_GET['debug'] = "true";
-if($_GET['debug'] == "true"){
-	$_SESSION['authUser'] == "true";
-}
 ?>
 <br>
 <br>

@@ -21,7 +21,7 @@ switch ($operation){
 		$c->createCategory();
 		// Redirecting to the panel and informing the category has been created
 		// Info : cc = created category
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/categories/list-category.php?info=cc');
+		header("Location: ".siteURL().'/list/category?info=cc');
 	} catch (Exception $e) {
 		throw new Exception("Error Processing Request, error $e", 1);
 	}
@@ -38,7 +38,7 @@ switch ($operation){
 		$c->updateCategory($categoryID,$categoryName);
 		// Redirecting to the panel and informing the category has been updated
 		// Info : uc = updated category
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/categories/list-category.php?info=uc');
+		header("Location: ".siteURL().'/list/category?info=uc');
 	} catch (Exception $e) {
 		throw new Exception("Error Processing Request, error $e", 1);
 	}
@@ -54,7 +54,7 @@ switch ($operation){
 		$c->deleteCategory($categoryID);
 		// Redirecting to the panel and informing the category has been deleted
 		// Info : dc = deleted category
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/categories/list-category.php?info=dc');
+		header("Location: ".siteURL().'/list/category?info=dc');
 	} catch (Exception $e) {
 		throw new Exception("Error Processing Request, error $e", 1);
 	}

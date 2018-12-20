@@ -47,7 +47,7 @@ switch ($operation) {
 		
 	// Redirecting to the panel and informing the project has been created
 	// Info : cp = created project
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/projects/list-projects.php?info=cpj');
+		header("Location: ".siteURL().'/list/project?info=cpj');
 	}
 	break;
 
@@ -94,7 +94,7 @@ switch ($operation) {
 		$p->updateProject($id,$name,$content,$featuredPhotoPath,$deliverydate);
 	// Redirecting to the panel and informing the project has been updated
 	// Info : cp = updated project
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/projects/list-projects.php?info=upj');
+		header("Location: ".siteURL().'/list/project?info=upj');
 	}
 	break;
 
@@ -108,7 +108,7 @@ switch ($operation) {
 	$p->deleteProject($projectID);
 	// Redirecting to the panel and informing the project has been deleted
 	// Info : cp = deleted project
-	header("Location: ".siteURL().'/freeBlog/view/admin-pages/projects/list-projects.php?info=dpj');
+	header("Location: ".siteURL().'/list/project?info=dpj');
 	break;
 	// If get invalid operation
 	default:

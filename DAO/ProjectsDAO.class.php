@@ -7,8 +7,8 @@
 // Creating the Data Acess Object of Projects
 class ProjectsDAO extends Projects{
 	// Making the create project
-	try {
-		public function createProject(){
+	public function createProject(){
+		try {
 			$sql = new SQL();
 			$statement = $sql->query("INSERT INTO FB_PROJECTS (project_name,project_content,project_featuredphoto,project_deliveryDate)
 				VALUES (:NAME,:CONTENT,:FEATUREDPHOTO,:DELIVERYDATE)",

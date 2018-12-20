@@ -25,8 +25,8 @@ switch ($operation) {
 	break;
 	
 	case 'logout';
-		// session_destroy();
-		header("Location: ".siteURL().'/view/admin');
+		session_destroy();
+		header("Location: ".siteURL().'/');
 	break;
 	default:
 		# code...

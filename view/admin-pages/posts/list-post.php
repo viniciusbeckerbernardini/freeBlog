@@ -1,10 +1,10 @@
 <?php
 // Requesting the config file
-require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 // Checking if is a authenticate user
 if(verifyAuthUser()){
 	// Requesting the header file
-	require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
+	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 	?>
 	<h2 class="center">Postagens</h2>
 	<?php
@@ -43,7 +43,7 @@ if(verifyAuthUser()){
 					<td><?php echo $result['post_content'] ?></td>
 					<td><?php echo $result['post_category'] ?></td>
 					<td>
-						<a href="update-post.php?id=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light">
+						<a href="/update/post?id=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light">
 							Atualizar
 						</a>
 						<a href="../../../controller/postController.php?operation=delete&postID=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light red">
@@ -55,8 +55,8 @@ if(verifyAuthUser()){
 		</tbody>
 	</table>
 	<?php
-	// Requesting the footer file
-	require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+// Requesting the footer file
+require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
-	header('Location:'.siteURL().'/freeBlog/view/admin-pages/admin-login.php');
+	header('Location:'.siteURL().'/admin');
 }

@@ -1,10 +1,10 @@
 <?php 
 // Requesting the config file
-require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 // Checking if the user is authenticate
 if(verifyAuthUser()){
 // Requesting the header file
-require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
+require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 // Getting the informations by the id passed in the $_GET
 $categoryID = $_GET['id'];
 $c = new CategoryDAO();
@@ -35,8 +35,8 @@ $result = $c->getInfoById($categoryID);
 </div>
 <?php 
 // Requesting the footer file
-require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
-	header('Location:'.siteURL().'/freeBlog/view/admin-pages/admin-login.php');
+	header('Location:'.siteURL().'/admin');
 }
 

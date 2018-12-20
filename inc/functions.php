@@ -47,7 +47,7 @@ function verifyAuthUser(){
 		return false;
 	}
 }
-// Route function to the pages
+// Route function to all the system pages
 function router(){
 	// GET the uri of the site
 	$uri = $_SERVER['REQUEST_URI'];
@@ -64,24 +64,119 @@ function router(){
 			case "/admin":
 			require_once("view/admin-pages/admin-login.php");
 			break;
+			case "/admin/":
+			require_once("view/admin-pages/admin-login.php");
+			break;
 			// Admin panel
 			case "/admin/panel":
 			require_once("view/admin-pages/admin-panel.php");
 			break;
+
+			case "/admin/logout":
+			header("Location:".siteURL()."/controller/adminController.php?operation=logout");
 			// Blog
 			case "/blog":
 			require_once("view/blog.php");
 			break;
-			// Create of the archives
+
+
+			// Categories
+			// Create category case
 			case "/create/category":
 			require_once("view/admin-pages/categories/create-category.php");
 			break;
+			// List category case
 			case "/list/category":
-			require_once("view/admin-pages/categories/list-categories.php");	
+			require_once("view/admin-pages/categories/list-category.php");	
 			break;
+			// Category responses from the controller
+			case "/list/category?info=cc":
+			require_once("view/admin-pages/categories/list-category.php");	
+			break;
+			case "/list/category?info=uc":
+			require_once("view/admin-pages/categories/list-category.php");	
+			break;
+			case "/list/category?info=dc":
+			require_once("view/admin-pages/categories/list-category.php");	
+			break;
+			// Update category
+			case "/update/category?id=".isset($_GET['id']):
+			require_once("view/admin-pages/categories/update-category.php");	
+			break;
+
+			// Posts
+			case "/create/post":
+			require_once("view/admin-pages/posts/create-post.php");
+			break;
+			// List post case
+			case "/list/post":
+			require_once("view/admin-pages/posts/list-post.php");	
+			break;
+			// Post responses from the controller
+			case "/list/post?info=cp":
+			require_once("view/admin-pages/posts/list-post.php");	
+			break;
+			case "/list/post?info=up":
+			require_once("view/admin-pages/posts/list-post.php");	
+			break;
+			case "/list/post?info=dp":
+			require_once("view/admin-pages/posts/list-post.php");	
+			break;
+			// Update post
+			case "/update/post?id=".isset($_GET['id']):
+			require_once("view/admin-pages/posts/update-post.php");	
+			break;
+
+			// Projects 
+			case "/create/project":
+			require_once("view/admin-pages/projects/create-project.php");
+			break;
+			// List project case
+			case "/list/project":
+			require_once("view/admin-pages/projects/list-project.php");	
+			break;
+			// Project responses from the controller
+			case "/list/project?info=cpj":
+			require_once("view/admin-pages/projects/list-project.php");	
+			break;
+			case "/list/project?info=upj":
+			require_once("view/admin-pages/projects/list-project.php");	
+			break;
+			case "/list/project?info=dpj":
+			require_once("view/admin-pages/projects/list-project.php");	
+			break;
+			// Update project
+			case "/update/project?id=".isset($_GET['id']):
+			require_once("view/admin-pages/projects/update-project.php");	
+			break;
+
+
+			// Users
+			case "/create/user":
+			require_once("view/admin-pages/users/create-user.php");
+			break;
+			// List users case
+			case "/list/user":
+			require_once("view/admin-pages/users/list-user.php");	
+			break;
+			// Users responses from the controller
+			case "/list/user?info=cu":
+			require_once("view/admin-pages/users/list-user.php");	
+			break;
+			case "/list/user?info=uu":
+			require_once("view/admin-pages/users/list-user.php");	
+			break;
+			case "/list/user?info=du":
+			require_once("view/admin-pages/users/list-user.php");	
+			break;
+			// Update user
+			case "/update/user?id=".isset($_GET['id']):
+			require_once("view/admin-pages/users/update-user.php");	
+			break;
+
 			// Error page
 			default:				
-			include("view/404.php");
+			require_once("view/404.php");
 			break;
 		}
 

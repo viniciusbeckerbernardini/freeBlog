@@ -23,7 +23,7 @@ switch ($operation) {
 		$p->createPost();
 		// Redirecting to the panel and informing the post has been created
 		// Info : cp = created post
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/posts/list-post.php?info=cp');	
+		header("Location: ".siteURL().'/list/post?info=cp');	
 	} catch (Exception $e) {
 		throw new Exception("Error Processing Request, error $e", 1);
 	}
@@ -41,7 +41,7 @@ switch ($operation) {
 		$p->updatePost($id,$name,$content,$category);
 		// Redirecting to the panel and informing the post has been updated
 		// Info : up = updated post
-		header("Location: ".siteURL().'/freeBlog/view/admin-pages/posts/list-post.php?info=up');	
+		header("Location: ".siteURL().'/list/post?info=up');	
 	} catch (Exception $e) {
 		throw new Exception("Error Processing Request, error $e", 1);
 	}
@@ -55,7 +55,7 @@ switch ($operation) {
 	$p->deletePost($postID);
 	// Redirecting to the panel and informing the category has been created
 	// Info : dp = deleted post
-	header("Location: ".siteURL().'/freeBlog/view/admin-pages/posts/list-post.php?info=dp');
+	header("Location: ".siteURL().'/list/post?info=dp');
 	break;
 	// If get invalid operation
 	default:
