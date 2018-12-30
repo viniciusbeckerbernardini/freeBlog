@@ -34,7 +34,7 @@ if(verifyAuthUser()){
 						<input type="file" name="featuredphoto" enctype="multipart/form-data"/>
 					</div>
 					<div class = "file-path-wrapper">
-						<input class ="file-path validate" type="text" value="<?php echo $result['project_featuredphoto'];?>" placeholder="Upload file"/>
+						<input class ="file-path validate" name="featuredphotoDesc" type="text" value="<?php echo $result['project_featuredphoto'];?>" placeholder="Upload file"/>
 					</div>
 				</div>
 			</div>

@@ -32,6 +32,7 @@ if(verifyAuthUser()){
 				<th>Título da postagem</th>
 				<th>Conteúdo da postagem</th>
 				<th>Categoria da postagem</th>
+				<th>Foto destacada</th>
 				<th>Ações</th>
 			</tr>
 		</thead>
@@ -42,6 +43,7 @@ if(verifyAuthUser()){
 					<td><?php echo $result['post_name'] ?></td>
 					<td><?php echo $result['post_content'] ?></td>
 					<td><?php echo $result['post_category'] ?></td>
+					<td><?php echo "<img class='thumb-projects' src=".$result['post_featuredphoto'].">" ?></td>
 					<td>
 						<a href="/update/post?id=<?php echo $result['post_id']; ?>" class="btn waves-effect waves-light">
 							Atualizar

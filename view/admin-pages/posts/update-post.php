@@ -21,6 +21,18 @@ if(verifyAuthUser()){
 	<h2 class="center">Registrar postagem</h2>
 	<div class="row">
 		<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postController.php?operation=update" >
+			<div class="col s12">	
+				<label>Imagem de destaque</label>
+				<div class = "file-field input-field">
+					<div class="btn">
+						<span>Enviar</span>
+						<input type="file" name="featuredphoto" enctype="multipart/form-data"/>
+					</div>
+					<div class = "file-path-wrapper">
+						<input class="file-path validate" value="<?php echo $postInfo['post_featuredphoto']; ?>" type ="text" placeholder="Upload file"/>
+					</div>
+				</div>
+			</div>
 			<div class="input-field col s6">
 				<input id="postname" name="postid" type="text" readonly="readonly" value="<?php echo $postInfo['post_id']; ?>">
 				<label for="postname">ID da categoria</label>

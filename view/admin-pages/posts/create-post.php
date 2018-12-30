@@ -16,6 +16,18 @@ if(verifyAuthUser()){
 	<h2 class="center">Criar postagem</h2>
 	<div class="row">
 		<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postController.php?operation=create" >
+			<div class="col s12">	
+				<label>Imagem de destaque</label>
+				<div class = "file-field input-field">
+					<div class="btn">
+						<span>Enviar</span>
+						<input type="file" name="featuredphoto" enctype="multipart/form-data"/>
+					</div>
+					<div class = "file-path-wrapper">
+						<input class ="file-path validate" type ="text" placeholder="Upload file"/>
+					</div>
+				</div>
+			</div>
 			<div class="input-field col s6">
 				<input id="postname" name="postname" type="text" class="validate">
 				<label for="postname">Título</label>

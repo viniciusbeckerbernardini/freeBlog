@@ -65,18 +65,24 @@ switch ($operation) {
 
 	// Moving the photo into directory
 	// Checking possible error
-	if($featuredPhoto['error']){
-		if($featuredPhoto['error'] == 4){
-			throw new Exception("Erro no envio do arquivo, erro: O arquivo já existe");
-			/* 
-			Ajustar aqui, o arquivo quando atualizamos sem atualizar a foto cai nesse erro, tratar
-			quando estiver na fase de implementação de validações
-			*/
-		}
+	if($featuredPhoto['error'] == 4){
+		$featuredPhotoDesc = filter_input(INPUT_POST, 'featuredphotoDesc');
+		// Instance of ProjectDAO, passing the parameters to the constructor to set the values
+		$p = new ProjectsDAO();
+		// Using the function createProject to create the register
+		// Getting the actual pathname to update
+		$p->updateProject($id,$name,$content,$featuredPhotoDesc,$deliverydate);	
+		// Redirecting to the panel and informing the project has been updated
+		// Info : cp = updated project
+		header("Location: ".siteURL().'/list/project?info=upj');
+	}else if($featuredPhoto['error'] != 4 && $featuredPhoto['error'] != 0 ){
+		throw new Exception("Error Processing Request ".$featuredPhoto['error']);
 	}else{
 		// Crating the constant name of the directory
 		define('DIRNAME', "uploads");
 		// Creating the path of upload
+		$year = date('Y');
+		$month = date('m');
 		$dirUpload = "..".DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.date('Y').DIRECTORY_SEPARATOR.date('m');	
 		// Checking if the path exists, if not create the path
 		if(!is_dir($dirUpload)){
@@ -86,18 +92,18 @@ switch ($operation) {
 		}
 		// Changing the name of the file to a pattern name
 		$featuredPhoto['userfile']['name'] = 'featuredPhoto_'.$nameForPhoto.'_'.date('d_m_y_g_i_h').'.jpg'; 
-	}
-	// Verifyng if he moves the file to directory, if its all right create the project
-	if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
-		// Creating the url to acess this photos after
-		$featuredPhotoPath = $_SERVER['SERVER_NAME'].DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
-		// Instance of ProjectDAO, passing the parameters to the constructor to set the values
-		$p = new ProjectsDAO();
-		// Using the function createProject to create the register
-		$p->updateProject($id,$name,$content,$featuredPhotoPath,$deliverydate);
-	// Redirecting to the panel and informing the project has been updated
-	// Info : cp = updated project
-		header("Location: ".siteURL().'/list/project?info=upj');
+		// Verifyng if he moves the file to directory, if its all right create the project
+		if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
+			// Creating the url to acess this photos after
+			$featuredPhotoPath = siteURL().DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
+			// Instance of ProjectDAO, passing the parameters to the constructor to set the values
+			$p = new ProjectsDAO();
+			// Using the function createProject to create the register
+			$p->updateProject($id,$name,$content,$featuredPhotoPath,$deliverydate);
+			// Redirecting to the panel and informing the project has been updated
+			// Info : cp = updated project
+			header("Location: ".siteURL().'/list/project?info=upj');
+		}
 	}
 	break;
 

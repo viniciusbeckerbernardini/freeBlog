@@ -10,12 +10,15 @@ class Posts{
 	private $name;
 	private $content;
 	private $postCategory;
+	private $featuredPhoto;
+
 
 	// Creating constructor
-	public function __construct($name = "",$content = "",$postCategory = 0){
+	public function __construct($name = "",$content = "",$postCategory = 0,$featuredPhoto = ""){
 		$this->setName($name);
 		$this->setContent($content);
 		$this->setPostCategory($postCategory);
+		$this->setFeaturedphoto($featuredPhoto);
 	}
 	// Creating destructor
 	public function __destruct(){
@@ -55,12 +58,21 @@ class Posts{
 		$this->postCategory = $value;
 	}
 
+	// Getter of featured content
+	public function getFeaturedphoto():string{
+		return $this->featuredPhoto;
+	}
+	// Setter of featured photo
+	public function setFeaturedphoto(string $value){
+		$this->featuredPhoto = $value;
+	}
+
 	// Creating Posts toString
 	public function __toString(){
 		return nl2br(
-			"ID da postagem: ".getPostsid().
-			"Nome da postagem: ".getName().
-			"Conteúdo da postagem: ".getContent().
-			"Categoria da postagem: ".getPostCategory());
+			"ID da postagem: ".$this->getPostid().
+			"Nome da postagem: ".$this->getName().
+			"Conteúdo da postagem: ".$this->getContent().
+			"Categoria da postagem: ".$this->getPostCategory());
 	}
 }

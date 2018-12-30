@@ -53,7 +53,7 @@ class Projects{
 	public function setContent(string $value){
 		$this->content = $value;
 	}
-	// Getter of featured content
+	// Getter of featured photo
 	public function getFeaturedphoto():string{
 		return $this->featuredPhoto;
 	}
@@ -70,7 +70,7 @@ class Projects{
 		$this->deliveryDate = $value;
 	}
 
-	// Projects tooString
+	// Projects toString
 	public function __toString(){
 		return 
 		"Nome do projeto: ".$this->getName().

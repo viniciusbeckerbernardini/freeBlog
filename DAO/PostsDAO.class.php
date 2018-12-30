@@ -9,11 +9,12 @@ class PostsDAO extends Posts{
 	public function createPost(){
 		try {
 			$sql = new SQL();
-			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_content,post_category)
-				VALUES (:NAME,:CONTENT,:POSTCATEGORY)",
+			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_content,post_category,post_featuredphoto)
+				VALUES (:NAME,:CONTENT,:POSTCATEGORY,:POSTFEATUREDPHOTO)",
 				array(":NAME"=>$this->getName(),
 					":CONTENT"=>$this->getContent(),
-					":POSTCATEGORY"=>$this->getPostCategory())
+					":POSTCATEGORY"=>$this->getPostCategory(),
+					":POSTFEATUREDPHOTO"=>$this->getFeaturedphoto())
 			);			
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);

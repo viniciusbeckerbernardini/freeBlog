@@ -47,6 +47,14 @@ function verifyAuthUser(){
 		return false;
 	}
 }
+
+function itemID(){
+	if(isset($_GET['id'])){
+		$id = $_GET['id'];
+		return $id;
+	}
+}
+
 // Route function to all the system pages
 function router(){
 	// GET the uri of the site
@@ -100,7 +108,7 @@ function router(){
 			require_once("view/admin-pages/categories/list-category.php");	
 			break;
 			// Update category
-			case "/update/category?id=".isset($_GET['id']):
+			case "/update/category?id=".itemID():
 			require_once("view/admin-pages/categories/update-category.php");	
 			break;
 
@@ -123,7 +131,7 @@ function router(){
 			require_once("view/admin-pages/posts/list-post.php");	
 			break;
 			// Update post
-			case "/update/post?id=".isset($_GET['id']):
+			case "/update/post?id=".itemID():
 			require_once("view/admin-pages/posts/update-post.php");	
 			break;
 
@@ -146,7 +154,7 @@ function router(){
 			require_once("view/admin-pages/projects/list-project.php");	
 			break;
 			// Update project
-			case "/update/project?id=".isset($_GET['id']):
+			case "/update/project?id=".itemID():
 			require_once("view/admin-pages/projects/update-project.php");	
 			break;
 
@@ -170,7 +178,7 @@ function router(){
 			require_once("view/admin-pages/users/list-user.php");	
 			break;
 			// Update user
-			case "/update/user?id=".isset($_GET['id']):
+			case "/update/user?id=".itemID():
 			require_once("view/admin-pages/users/update-user.php");	
 			break;
 
