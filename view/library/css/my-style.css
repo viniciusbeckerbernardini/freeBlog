@@ -88,6 +88,12 @@ div#main-post {
     display: none;
 }
 
+.thumb-projects{
+    width:150px;
+    max-width: 100%;
+    height: auto;
+}
+
 
 @media screen and (max-width:768px){
 

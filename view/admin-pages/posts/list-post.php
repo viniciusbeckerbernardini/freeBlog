@@ -24,7 +24,7 @@ if(verifyAuthUser()){
 	}
 	?>
 
-	<a class="btn waves-effect waves-light" href="create-post.php">Criar post</a>
+	<a class="btn waves-effect waves-light" href="/create/post">Criar post</a>
 	<table class="table-responsive">
 		<thead>
 			<tr>

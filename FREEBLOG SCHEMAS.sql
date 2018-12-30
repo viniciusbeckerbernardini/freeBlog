@@ -10,10 +10,11 @@ CREATE TABLE FB_CATEGORY(
 CREATE TABLE FB_POST(
      post_id int not null auto_increment,
      post_name varchar(64) not null, 
+     post_slug varchar(64) not null,
      post_content longtext not null,
      post_thumbnail longtext null,
      post_category int not null,
-     post_publish_date datetime default CURRENT_TIMESTAMP not null ,
+     post_publish_date datetime default CURRENT_TIMESTAMP not null,
      foreign key (post_category) references FB_CATEGORY(category_id),
      primary key (post_id)
 );
@@ -44,7 +45,7 @@ CREATE TABLE FB_USER(
      primary key (user_id)
 );
 
---Este é um usuário com a senha 123456 --
+/* Este é um usuário com a senha 123456 */
 
 INSERT INTO FB_USER(
      user_name,

@@ -1,4 +1,3 @@
- M.AutoInit();
 $(document).ready(function(){
 	$('.sidenav').sidenav();
 	// Select input

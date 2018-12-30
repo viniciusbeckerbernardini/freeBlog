@@ -72,5 +72,5 @@ if(verifyAuthUser()){
 // Requesting the header file
 require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
-	header('Location:'.siteURL().'/freeBlog/view/admin-pages/admin-login.php');
+	header('Location:'.siteURL().'/admin');
 }

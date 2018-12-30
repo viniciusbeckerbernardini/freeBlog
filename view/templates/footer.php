@@ -11,10 +11,10 @@
 				</footer>
 			</section>
 			<!-- Loading system scripts -->
-			<script src="<?php siteUrl(); ?>/view/library/js/jQuery.min.js"></script>
+			<script src="<?php siteUrl(); ?>/view/library/js/jQuery.js"></script>
 			<script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-			<script src="<?php siteUrl(); ?>/view/library/js/jQuery.mask.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+			<script src="<?php siteUrl(); ?>/view/library/js/jQuery.mask.js"></script>
+			<script src="<?php siteUrl(); ?>/view//library/js/materialize.js"></script>
 			<script src="<?php siteUrl(); ?>/view/library/js/my-js.js"></script>
 			<!-- End of loading system scripts -->
 		</body>

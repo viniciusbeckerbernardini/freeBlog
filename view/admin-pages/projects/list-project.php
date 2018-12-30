@@ -23,7 +23,7 @@ if(verifyAuthUser()){
 		echo "<script>alert('Projeto deletado!');</script>";
 	}
 	?>
-	<a class="btn waves-effect waves-light" href="create-project.php">Criar projeto</a>
+	<a class="btn waves-effect waves-light" href="/create/project">Criar projeto</a>
 	<table class="table-responsive">
 		<thead>
 			<tr>
@@ -41,10 +41,10 @@ if(verifyAuthUser()){
 					<td><?php echo $result['project_id'] ?></td>
 					<td><?php echo $result['project_name'] ?></td>
 					<td><?php echo $result['project_content'] ?></td>
-					<td><?php echo "<img src=".$result['project_featuredphoto'].">" ?></td>
+					<td><?php echo "<img class='thumb-projects' src=".$result['project_featuredphoto'].">" ?></td>
 					<td><?php echo $result['project_deliverydate'] ?></td>
 					<td>
-						<a href="update-project.php?id=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light">
+						<a href="/update/project?id=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light">
 							Atualizar
 						</a>
 						<a href="../../../controller/projectController.php?operation=delete&projectID=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light red">
