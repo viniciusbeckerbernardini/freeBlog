@@ -27,24 +27,39 @@ function loadClass($className){
 }
 // Using the spl function to register the function below
 spl_autoload_register('loadClass');
+
+
 // Rotine to get the site name 
 function siteURL(){
 	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 	$domainName = $_SERVER['HTTP_HOST'];
 	echo $protocol.$domainName;
 }
+
+
 // Function to verify is the user is authenticate
 function verifyAuthUser(){
+	// Regenerating the id every new page
 	session_regenerate_id();
+	// Verifying is the session variable exists
 	if(isset($_SESSION['authUser'])){
-		$isAuth = $_SESSION['authUser'];
-	}else{
-		$isAuth = "false";	
-	}
-	if($isAuth == "true"){
-		return true;
-	}else{
-		return false;
+		$login = $_SESSION['authUser']['login'];
+		$password = $_SESSION['authUser']['password'];
+		// Calling the SQL class
+		$sql = new SQL();
+		// Making the statement
+		$statement = $sql->query("SELECT * FROM FB_USER where user_email = :EMAIL and user_password = :PASSWORD",
+			array(
+				':EMAIL'=>$login,
+				':PASSWORD'=>$password
+			));
+		// Getting the result
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		if($result != null){
+			return true;
+		}else if ($result == null){
+			return false;	
+		}
 	}
 }
 
@@ -189,5 +204,5 @@ function router(){
 		}
 
 	}	
-	
+
 }

@@ -17,10 +17,14 @@ switch ($operation) {
 	$password = $_POST['password']; 
 	$u = new UserDAO();
 	$result = $u->login($login,$password);
-	if($result == "false"){
-		header("Location: ".siteURL().'/admin');
-	}else{
+
+	if($result){
+		// var_dump($result);
+		// var_dump($_SESSION['authUser']['login']);
 		header("Location: ".siteURL().'/admin/panel');
+	}else{
+		// var_dump($result);
+		header("Location: ".siteURL().'/admin');
 	}
 	break;
 	

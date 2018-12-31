@@ -90,12 +90,15 @@ class UserDAO extends User{
 					':PASSWORD'=>hash_hmac('sha256', $password, 'secret')
 				));
 
-			$result = $statement;
-		// var_dump($result->fetchAll(PDO::FETCH_ASSOC));
-			if($result->fetchAll(PDO::FETCH_ASSOC) != null){
-				return $_SESSION['authUser'] = "true";
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			// var_dump($result->fetchAll(PDO::FETCH_ASSOC));
+			if($result != null){
+				var_dump($result);
+				$_SESSION['authUser']['login'] = $email;
+				$_SESSION['authUser']['password'] = hash_hmac('sha256', $password, 'secret');
+				return true;
 			}else{
-				return $_SESSION['authUser'] = "false";
+				return false;
 			}	
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);

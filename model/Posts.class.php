@@ -8,14 +8,16 @@ class Posts{
 	// Creating atributes
 	private $postID;
 	private $name;
+	private $slug;
 	private $content;
 	private $postCategory;
 	private $featuredPhoto;
 
 
 	// Creating constructor
-	public function __construct($name = "",$content = "",$postCategory = 0,$featuredPhoto = ""){
+	public function __construct($name = "",$slug = "",$content = "",$postCategory = 0,$featuredPhoto = ""){
 		$this->setName($name);
+		$this->setSlug($slug);
 		$this->setContent($content);
 		$this->setPostCategory($postCategory);
 		$this->setFeaturedphoto($featuredPhoto);
@@ -41,7 +43,15 @@ class Posts{
 	public function setName(string $value){
 		$this->name = $value;
 	}
-  // Getter of content
+	// Getter of slug
+	public function getSlug():string{
+		return $this->slug;
+	}
+	// Setter of slug
+	public function setSlug(string $value){
+		$this->slug = $value;
+	}
+  	// Getter of content
 	public function getContent():string{
 		return $this->content;
 	}

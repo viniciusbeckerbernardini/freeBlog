@@ -13,6 +13,7 @@ switch ($operation) {
 	case 'create':
 	// Getting the informations using $_POST
 	$name = filter_input(INPUT_POST, 'postname');
+	$slug = str_replace(" ", "-", $name);
 	$category = filter_input(INPUT_POST,'postcategory');
 	$content = filter_input(INPUT_POST, 'postcontent');
 	$featuredPhoto = $_FILES['featuredphoto'];
@@ -45,8 +46,9 @@ switch ($operation) {
 			$featuredPhotoPath = DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
 		// Instancing the PostsDAO class
 		// Passing the values through the constructor
-			$p = new PostsDAO($name,$content,$category,$featuredPhotoPath);
+			$p = new PostsDAO($name,$slug,$content,$category,$featuredPhotoPath);
 		// Acessing the createPost method to create the post
+			var_dump($p);
 			$p->createPost();
 		// Redirecting to the panel and informing the post has been created
 		// Info : cp = created post

@@ -9,9 +9,10 @@ class PostsDAO extends Posts{
 	public function createPost(){
 		try {
 			$sql = new SQL();
-			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_content,post_category,post_featuredphoto)
-				VALUES (:NAME,:CONTENT,:POSTCATEGORY,:POSTFEATUREDPHOTO)",
+			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_slug,post_content,post_category,post_featuredphoto)
+				VALUES (:NAME,:SLUG,:CONTENT,:POSTCATEGORY,:POSTFEATUREDPHOTO)",
 				array(":NAME"=>$this->getName(),
+					":SLUG"=>$this->getSlug(),
 					":CONTENT"=>$this->getContent(),
 					":POSTCATEGORY"=>$this->getPostCategory(),
 					":POSTFEATUREDPHOTO"=>$this->getFeaturedphoto())
