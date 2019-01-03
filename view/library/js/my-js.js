@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#homeMosaic').Mosaic();
 	$('.sidenav').sidenav();
 	// Select input
 	$('select').formSelect();
@@ -67,6 +68,11 @@ $(document).ready(function(){
 	// End of datepicker
 	// Date mask
 	$('.date').mask('0000-00-00');
+	$('.carousel.carousel-slider').carousel({
+		fullWidth: true,
+		indicators: true
+	});
+	
 });
 
 // No jQuery

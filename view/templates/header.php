@@ -12,6 +12,9 @@
 	<!--Import materialize.css-->
 	<link rel="stylesheet" href="<?php siteUrl(); ?>/view/library/css/materialize.css" media="screen,projection">
 	<!-- End of loading the materialize icons -->
+	<!-- Importing the jQuery mosaic css -->
+	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/jQuery-mosaic.css">
+	<!-- End of importing -->
 	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/my-style.css">
 	<!-- End of loading of stylesheet -->
 </head>

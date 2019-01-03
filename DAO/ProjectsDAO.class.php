@@ -56,7 +56,7 @@ class ProjectsDAO extends Projects{
 	}
 
 	// Creating list function
-	public function listUser(){
+	public function listProject(){
 		try {
 			$sql = new SQL();
 			$statement = $sql->query("SELECT * FROM FB_PROJECTS");

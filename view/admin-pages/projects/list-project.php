@@ -11,8 +11,8 @@ if(verifyAuthUser()){
 	// Bring all projects
 	// Instancing the class ProjectsDAO
 	$p = new ProjectsDAO();
-	// Getting the data using the listUser Function
-	$results = $p->listUser();
+	// Getting the data using the listProject Function
+	$results = $p->listProject();
 	// Getting the information the post has been deleted,updated,created.
 	$message = filter_input(INPUT_GET,'info');
 	if($message == 'cpj'){

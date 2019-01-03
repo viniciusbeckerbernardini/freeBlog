@@ -6,6 +6,8 @@ require_once('templates'.DIRECTORY_SEPARATOR.'header.php');
 // Searching the posts
 $p = new PostsDAO();
 $posts = $p->listPost();
+$pj = new ProjectsDAO();
+$projects = $pj->listProject();
 ?>
 <br>
 <br>
@@ -31,6 +33,22 @@ $posts = $p->listPost();
 				<?php } ?>
 			<?php } ?>
 		<?php } ?>
+	</div>
+</div>
+<div class="row">
+	<h2 class="title center">Projetos</h2>
+	<br>
+	<div class="col s12">	
+		<div id="homeMosaic" data-max-row-height="500" data-refit-on-resize="1" data-refit-on-resize-relay="0" data-default-aspect-ratio="0.5" data-max-row-height-policy="crop" data-high-res-images-width-threshold="850" data-responsive-width-threshold="500">
+			<?php 	foreach ($projects as $project) {
+				echo '<img src="'.$project['project_featuredphoto'].'">';
+			} ?>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col s12">	
+		<a class="btn waves-effect waves-light right" href="#">+projetos</a>
 	</div>
 </div>
 <?php 

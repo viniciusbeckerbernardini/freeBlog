@@ -13,7 +13,7 @@ switch ($operation) {
 	case 'create':
 	// Getting the informations using $_POST
 	$name = filter_input(INPUT_POST, 'postname');
-	$slug = str_replace(" ", "-", $name);
+	$slug = createSlug($name);
 	$category = filter_input(INPUT_POST,'postcategory');
 	$content = filter_input(INPUT_POST, 'postcontent');
 	$featuredPhoto = $_FILES['featuredphoto'];

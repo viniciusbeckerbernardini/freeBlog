@@ -3,6 +3,9 @@
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 // Requesting the header file
 require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
+if(verifyAuthUser()){
+	header('Location:'.siteURL().'/admin/panel');
+}
 ?>
 <form method="post" action="<?php siteUrl(); ?>/controller/adminController.php?operation=login">
 	<div class="row">
