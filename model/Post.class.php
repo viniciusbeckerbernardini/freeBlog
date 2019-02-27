@@ -4,7 +4,7 @@
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 
-class Posts{
+class Post{
 	// Creating atributes
 	private $postID;
 	private $name;
@@ -15,12 +15,13 @@ class Posts{
 
 
 	// Creating constructor
-	public function __construct($name = "",$slug = "",$content = "",$postCategory = 0,$featuredPhoto = ""){
+	public function __construct($name = "",$slug = "",$content = "",$postCategory = 0,$featuredPhoto = "", $id = 0){
 		$this->setName($name);
 		$this->setSlug($slug);
 		$this->setContent($content);
 		$this->setPostCategory($postCategory);
 		$this->setFeaturedphoto($featuredPhoto);
+		$this->setPostid($id);
 	}
 	// Creating destructor
 	public function __destruct(){

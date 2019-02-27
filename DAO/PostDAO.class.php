@@ -4,18 +4,19 @@
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 // Creating Data Acess Object of Posts
-class PostsDAO extends Posts{
+class PostDAO{
 	// Making create Posts
-	public function createPost(){
+	public function createPost($name,$slug,$content,$category,$featuredPhotoPath){
 		try {
 			$sql = new SQL();
 			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_slug,post_content,post_category,post_featuredphoto)
 				VALUES (:NAME,:SLUG,:CONTENT,:POSTCATEGORY,:POSTFEATUREDPHOTO)",
-				array(":NAME"=>$this->getName(),
-					":SLUG"=>$this->getSlug(),
-					":CONTENT"=>$this->getContent(),
-					":POSTCATEGORY"=>$this->getPostCategory(),
-					":POSTFEATUREDPHOTO"=>$this->getFeaturedphoto())
+				array(":NAME"=>$name,
+					":SLUG"=>$slug,
+					":CONTENT"=>$content,
+					":POSTCATEGORY"=>$category,
+					":POSTFEATUREDPHOTO"=>$featuredPhotoPath
+				)
 			);			
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);
@@ -23,20 +24,19 @@ class PostsDAO extends Posts{
 
 	}
 	// Making update Posts
-	public function updatePost($id,$name,$content,$postCategory){
+	public function updatePost($id,$name,$slug,$content,$postCategory,$featuredPhotoPath){
 		try {
-			$this->setPostid($id);
-			$this->setName($name);
-			$this->setContent($content);
-			$this->setPostCategory($postCategory);
 			$sql = new SQL();
-			$statement = $sql->query("UPDATE FB_POST SET post_name = :NAME , post_content = :CONTENT, post_category = :POSTCATEGORY WHERE post_id = :ID",
-				array(":NAME"=>$this->getName(),
-					":CONTENT"=>$this->getContent(),
-					":POSTCATEGORY"=>$this->getPostCategory(),
-					":ID"=>$this->getPostId()));
+			$statement = $sql->query("UPDATE FB_POST SET post_name = :NAME , post_slug = :SLUG, post_content = :CONTENT, post_category = :POSTCATEGORY, post_featuredphoto = :FEATUREDPHOTO WHERE post_id = :ID",
+				array(":NAME"=>$name,
+					":SLUG"=>$slug,
+					":CONTENT"=>$content,
+					":POSTCATEGORY"=>$postCategory,
+					":ID"=>$featuredPhotoPath
+				)
+			);
 		} catch (Exception $e) {
-			throw new Exception("Error Processing Request, error $e", 1);
+			throw new Exception("Error Processing Request, error $e");
 		}
 	}
 	// Making list Post

@@ -4,14 +4,14 @@
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 // Creating Data Acess Object of Category
-class CategoryDAO extends Category{
+class CategoryDAO{
 	// Making create category
-	public function createCategory(){
+	public function createCategory($name){
 		try{
 			$sql = new SQL();
 			$statement = $sql->query("INSERT INTO FB_CATEGORY (category_name)
 				VALUES (:NAME)",
-				array(":NAME"=>$this->getName())
+				array(":NAME"=>$name)
 			);
 		}
 		catch(Exception $e){
@@ -21,13 +21,11 @@ class CategoryDAO extends Category{
 	// Making update category
 	public function updateCategory($id,$name){
 		try {
-			$this->setCategoryid($id);
-			$this->setName($name);
 			$sql = new SQL();
 			$statement = $sql->query("UPDATE FB_CATEGORY SET category_name = :NAME
 				WHERE category_id = :ID",
-				array(":NAME"=>$this->getName(),
-					":ID"=>$this->getCategoryid())
+				array(":NAME"=>$name,
+					":ID"=>$id)
 			);	
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);
@@ -37,10 +35,9 @@ class CategoryDAO extends Category{
 	// Making delete category
 	public function deleteCategory($id){
 		try {
-			$this->setCategoryId($id);
 			$sql = new SQL();
 			$statement = $sql->query("DELETE FROM FB_CATEGORY WHERE category_id = :ID ",
-				array(":ID"=>$this->getCategoryid()));	
+				array(":ID"=>$id));	
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);
 		}
@@ -61,7 +58,7 @@ class CategoryDAO extends Category{
 	// Creating getInfoById function
 	function getInfoById(){
 		try {
-			$id = $_GET['id'];
+			$id = filter_input(INPUT_GET,"id");
 			$sql = new SQL();
 			$statement = $sql->query("SELECT * FROM FB_CATEGORY WHERE category_id = :ID",
 				array(":ID"=>$id)

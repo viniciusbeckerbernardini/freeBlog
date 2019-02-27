@@ -4,7 +4,7 @@ require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 // Requesting the header file
 require_once('templates'.DIRECTORY_SEPARATOR.'header.php');
 // Searching the posts
-$p = new PostsDAO();
+$p = new PostDAO();
 $posts = $p->listPost();
 $pj = new ProjectsDAO();
 $projects = $pj->listProject();

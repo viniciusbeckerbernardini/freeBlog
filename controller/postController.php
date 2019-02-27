@@ -46,22 +46,23 @@ switch ($operation) {
 			$featuredPhotoPath = DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
 		// Instancing the PostsDAO class
 		// Passing the values through the constructor
-			$p = new PostsDAO($name,$slug,$content,$category,$featuredPhotoPath);
+			$p = new Post($name,$slug,$content,$category,$featuredPhotoPath);
+			$pDAO = new PostDAO();
 		// Acessing the createPost method to create the post
-			var_dump($p);
-			$p->createPost();
+			$pDAO->createPost($p->getName(),$p->getSlug(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto());
 		// Redirecting to the panel and informing the post has been created
 		// Info : cp = created post
 			header("Location: ".siteURL().'/list/post?info=cp');
 		}	
 	} catch (Exception $e) {
-		throw new Exception("Error Processing Request", 1);
+		throw new Exception("Error Processing Request, in the line ".$e->getLine()." ");
 	}
 	break;
 	case 'update':
 	// Getting the informations using $_POST
 	$id = filter_input(INPUT_POST, 'postid');
 	$name = filter_input(INPUT_POST, 'postname');
+	$slug = createSlug($name);
 	$category = filter_input(INPUT_POST,'postcategory');
 	$content = filter_input(INPUT_POST, 'postcontent');
 	$featuredPhoto = $_FILES['featuredphoto'];
@@ -71,11 +72,12 @@ switch ($operation) {
 		// Checking possible error
 			if($featuredPhoto['error'] == 4){
 				// Passing the values through the constructor
-				$p = new PostsDAO();
+				$p = new Post($name,$slug,$content,$category,$featuredPhotoPath);
+				$pDAO = new PostDAO();
 				// Acessing the update post method
-				$p->updatePost($id,$name,$content,$category,$featuredPhoto);
+				$pDAO->updatePost($p->getPostid(),$p->getSlug(),$p->getName(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto());
 				// Redirecting to the panel and informing the post has been updated
-				// Info : up = updated post
+				// Info : up = updated postcontent
 				header("Location: ".siteURL().'/list/post?info=up');		
 			}else if($featuredPhoto['error'] != 4){
 				throw new Exception("Error no envio da imagem, erro".$featuredPhoto['erro']);
@@ -96,25 +98,28 @@ switch ($operation) {
 				$featuredPhoto['userfile']['name'] = 'featuredPhoto_'.$nameForPhoto.'_'.date('d_m_y_g_i_h').'.jpg'; 
 				// Verifyng if he moves the file to directory, if its all right create the project
 				if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
-					// Passing the values through the constructor
-					$p = new PostsDAO();
+
+					$p = new Post($name,$slug,$content,$category,$featuredPhoto);
+
+					var_dump($p);
+					$pDAO = new PostDAO();
 					// Acessing the update post method
-					$p->updatePost($id,$name,$content,$category,$featuredPhoto);
+					$pDAO->updatePost($p->getPostid(),$p->getSlug(),$p->getName(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto());
 					// Redirecting to the panel and informing the post has been updated
 					// Info : up = updated post
-					header("Location: ".siteURL().'/list/post?info=up');	
+					// header("Location: ".siteURL().'/list/post?info=up');	
 				}
 			}	
 		} 
 	}catch (Exception $e) {
-		throw new Exception("Error Processing Request", 1);
+		throw new Exception("Error Processing Request, error".$e);
 	}
 	break;
 	case 'delete':
 	// Getting the post id using superglobal $_GET
 	$postID = filter_input(INPUT_GET, 'postID');
 	// Instancing the PostsDAO class
-	$p = new PostsDAO();
+	$p = new PostDAO();
 	// Acessing the delete post method to delete post by id
 	$p->deletePost($postID);
 	// Redirecting to the panel and informing the category has been created

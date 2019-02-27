@@ -10,7 +10,7 @@ if(verifyAuthUser()){
 	<?php
 	// Bring all projects
 	// Instancing the class PDO
-	$p = new PostsDAO();
+	$p = new PostDAO();
 	$results = $p->listPost();
 	// print_r($results);
 	// Getting the information the post has been deleted,updated,created.

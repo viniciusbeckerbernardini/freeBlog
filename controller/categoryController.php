@@ -8,7 +8,7 @@
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Using the $_GET to get the operation request
-$operation = $_GET['operation'];
+$operation = filter_input(INPUT_GET,"operation");
 switch ($operation){
 	// Create case to register the category
 	case 'create':
@@ -16,9 +16,10 @@ switch ($operation){
 	$categoryName = filter_input(INPUT_POST, 'categoryname');
 	// Instancing the CategoryDAO class, passing the category name to constructor
 	try {
-		$c = new CategoryDAO($categoryName);
+		$c = new Category($categoryName);
+		$cDAO = new CategoryDAO();
 		// Using the createCategory function
-		$c->createCategory();
+		$cDAO->createCategory($c->getName());
 		// Redirecting to the panel and informing the category has been created
 		// Info : cc = created category
 		header("Location: ".siteURL().'/list/category?info=cc');
@@ -33,9 +34,10 @@ switch ($operation){
 	$categoryName = filter_input(INPUT_POST, 'categoryname');
 	try {
 		// Instancing the Category Data Acess Object class
-		$c = new CategoryDAO();
+		$c = new Category($categoryName,$categoryID);
+		$cDAO = new CategoryDAO();
 		// Acessing the update category method, passing the variables through him.
-		$c->updateCategory($categoryID,$categoryName);
+		$cDAO->updateCategory($categoryID,$categoryName);
 		// Redirecting to the panel and informing the category has been updated
 		// Info : uc = updated category
 		header("Location: ".siteURL().'/list/category?info=uc');
@@ -49,9 +51,10 @@ switch ($operation){
 	$categoryID = filter_input(INPUT_GET, 'categoryID');
 	try {
 		// Instancing the Category DAO class
-		$c = new CategoryDAO();
+		$c = new Category("",$categoryID);
+		$cDAO = new CategoryDAO();
 		// Acessing the deleteCategory method
-		$c->deleteCategory($categoryID);
+		$cDAO->deleteCategory($categoryID);
 		// Redirecting to the panel and informing the category has been deleted
 		// Info : dc = deleted category
 		header("Location: ".siteURL().'/list/category?info=dc');

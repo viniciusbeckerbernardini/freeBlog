@@ -7,7 +7,7 @@
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Getting the operation using $_GET
-$operation = $_GET['operation'];
+$operation = filter_input(INPUT_GET, 'operation');
 // Using the switch to get the request operation
 switch ($operation) {
 	// Case create to create the user
@@ -18,9 +18,10 @@ switch ($operation) {
 	$password = hash_hmac('sha256', filter_input(INPUT_POST, 'userpassword'), 'secret');
 	$type = filter_input(INPUT_POST, 'usertype');
 	// Instancing the UserDAO class, passing the values through the __construct.
-	$u = new UserDAO($name,$email,$password,$type);
+	$u = new User($name,$email,$password,$type);
+	$uDAO = new UserDAO();
 	// Acessing the create user method
-	$u->createUser();
+	$uDAO->createUser($u->getName(),$u->getEmail(),$u->getPassword(),$u->getUsertype());
 	// Redirecting to the panel and informing the user has been created
 	// Info : cu = create user
 	header("Location: ".siteURL().'/list/user?info=cu');
@@ -34,9 +35,10 @@ switch ($operation) {
 	$password = filter_input(INPUT_POST, 'userpassword');
 	$type = filter_input(INPUT_POST, 'usertype');
 	// Instancing the UserDAO class
-	$u = new UserDAO();
+	$u = new User($name,$email,$password,$type,$id);
+	$uDAO = new UserDAO();
 	// Acessing the update user method
-	$u->updateUser($id,$name,$email,$password,$type);
+	$uDAO->updateUser($u->getUserid(),$u->getName(),$u->getEmail(),$u->getPassword(),$u->getUsertype());
 	// Redirecting to the panel and informing the user has been updated
 	// Info : uu  = updated user
 	header("Location: ".siteURL().'/list/user?info=uu');
@@ -46,9 +48,10 @@ switch ($operation) {
 	// Getting the id of the user using the superglobal $_GET
 	$id = filter_input(INPUT_GET, 'userID');
 	// Instancing the UserDAO class
-	$u = new UserDAO();
+	$u = new User("","","","",$id);
+	$uDAO = new UserDAO();
 	// Acessing the deleteUser method
-	$u->deleteUser($id);
+	$uDAO->deleteUser($u->getUserid());
 	// Redirecting to the panel and informing the user has been deleted
 	// Info : du  = delete user
 	header("Location: ".siteURL().'/list/user?info=du');

@@ -7,7 +7,7 @@ if(verifyAuthUser()){
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 	// Getting the informations by the id passed in the $_GET
 	$postId = $_GET['id'];
-	$p = new PostsDAO();
+	$p = new PostDAO();
 	$postInfo = $p->getInfoById($postId);
 	// Instancing the class CategoryDAO
 	$c = new CategoryDAO();

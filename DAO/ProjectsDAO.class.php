@@ -5,7 +5,7 @@
 *@since 30/09/2018
 */
 // Creating the Data Acess Object of Projects
-class ProjectsDAO extends Projects{
+class ProjectsDAO{
 	// Making the create project
 	public function createProject(){
 		try {

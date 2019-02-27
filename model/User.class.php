@@ -13,11 +13,12 @@ class User{
 	private $userType;
 
 	// Creating constructor
-	public function __construct($name="",$email="",$password="",$userType=""){
+	public function __construct($name="",$email="",$password="",$userType="", $id = 0){
 		$this->setName($name);
 		$this->setEmail($email);
 		$this->setPassword($password);
 		$this->setUsertype($userType);
+		$this->setUserid($id);
 	}
 	// Creating destructor
 	public function __destruct(){
@@ -68,9 +69,9 @@ class User{
 	// Creating User toString
 	public function __toString(){
 		return nl2br(
-			"ID do usuário: ".getUserId().
-			"Nome do usuário: ".getName().
-			"E-Mail do usuário: ".getEmail().
-			"Tipo do usuário: ".getUsertype());
+			"ID do usuário: ".$this->getUserid().
+			"Nome do usuário: ".$this->getName().
+			"E-Mail do usuário: ".$this->getEmail().
+			"Tipo do usuário: ".$this->getUsertype());
 	}
 }

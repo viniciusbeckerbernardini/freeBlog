@@ -10,8 +10,9 @@ class Category{
 	private $name;
 
 	// Creating the constructor
-	public function __construct($name = ""){
+	public function __construct($name = "",$id = 0){
 		$this->setName($name);
+		$this->setCategoryId($id);
 	}
 	// Creating the destructor
 	public function __destruct(){
