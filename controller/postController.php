@@ -24,20 +24,20 @@ switch ($operation) {
 		if($featuredPhoto['error']){
 			throw new Exception("Erro no envio do arquivo, erro: ".$featuredPhoto['error']);
 		}else{
-		// Crating the constant name of the directory
+			// Crating the constant name of the directory
 			define('DIRNAME', "uploads");
 
-		// Creating the path of upload
+			// Creating the path of upload
 			$year = date('Y');
 			$month = date('m');
 			$dirUpload = "..".DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.date('Y').DIRECTORY_SEPARATOR.date('m');	
-		// Checking if the path exists, if not create the path
+			// Checking if the path exists, if not create the path
 			if(!is_dir($dirUpload)){
 				mkdir('..'.DIRECTORY_SEPARATOR.DIRNAME);
 				mkdir('..'.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.date('Y'));
 				mkdir($dirUpload);
 			}
-		// Changing the name of the file to a pattern name
+			// Changing the name of the file to a pattern name
 			$featuredPhoto['userfile']['name'] = 'featuredPhoto_'.$nameForPhoto.'_'.date('d_m_y_g_i_h').'.jpg'; 
 		}
 		// Verifyng if he moves the file to directory, if its all right create the project
@@ -62,6 +62,7 @@ switch ($operation) {
 	// Getting the informations using $_POST
 	$id = filter_input(INPUT_POST, 'postid');
 	$name = filter_input(INPUT_POST, 'postname');
+	$nameForPhoto = str_replace(' ','_',$name);
 	$slug = createSlug($name);
 	$category = filter_input(INPUT_POST,'postcategory');
 	$content = filter_input(INPUT_POST, 'postcontent');
@@ -71,16 +72,18 @@ switch ($operation) {
 		// Moving the photo into directory
 		// Checking possible error
 			if($featuredPhoto['error'] == 4){
+				// Photo actual name for update
+				$featuredPhotoPath = filter_input(INPUT_POST,"featuredphoto");
 				// Passing the values through the constructor
-				$p = new Post($name,$slug,$content,$category,$featuredPhotoPath);
+				$p = new Post($name,$slug,$content,$category,$featuredPhotoPath,$id);
 				$pDAO = new PostDAO();
 				// Acessing the update post method
 				$pDAO->updatePost($p->getPostid(),$p->getSlug(),$p->getName(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto());
 				// Redirecting to the panel and informing the post has been updated
 				// Info : up = updated postcontent
 				header("Location: ".siteURL().'/list/post?info=up');		
-			}else if($featuredPhoto['error'] != 4){
-				throw new Exception("Error no envio da imagem, erro".$featuredPhoto['erro']);
+			}else if($featuredPhoto['error'] != 4  && $featuredPhoto['error'] != 0){
+				throw new Exception("Error no envio da imagem, erro".$featuredPhoto['error']);
 			}else{
 				// Crating the constant name of the directory
 				define('DIRNAME', "uploads");
@@ -98,16 +101,15 @@ switch ($operation) {
 				$featuredPhoto['userfile']['name'] = 'featuredPhoto_'.$nameForPhoto.'_'.date('d_m_y_g_i_h').'.jpg'; 
 				// Verifyng if he moves the file to directory, if its all right create the project
 				if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
-
-					$p = new Post($name,$slug,$content,$category,$featuredPhoto);
-
-					var_dump($p);
+					// Creating the url to acess this photos after
+					$featuredPhotoPath = DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
+					$p = new Post($name,$slug,$content,$category,$featuredPhotoPath,$id);
 					$pDAO = new PostDAO();
 					// Acessing the update post method
 					$pDAO->updatePost($p->getPostid(),$p->getSlug(),$p->getName(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto());
 					// Redirecting to the panel and informing the post has been updated
 					// Info : up = updated post
-					// header("Location: ".siteURL().'/list/post?info=up');	
+					header("Location: ".siteURL().'/list/post?info=up');	
 				}
 			}	
 		} 
@@ -118,10 +120,12 @@ switch ($operation) {
 	case 'delete':
 	// Getting the post id using superglobal $_GET
 	$postID = filter_input(INPUT_GET, 'postID');
-	// Instancing the PostsDAO class
-	$p = new PostDAO();
+	// Instancing the Post class
+	$p = new Post("","","",0,"",$postID);
+	// Instancing the PostDAO class
+	$pDAO = new PostDAO();
 	// Acessing the delete post method to delete post by id
-	$p->deletePost($postID);
+	$pDAO->deletePost($postID);
 	// Redirecting to the panel and informing the category has been created
 	// Info : dp = deleted post
 	header("Location: ".siteURL().'/list/post?info=dp');

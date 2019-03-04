@@ -7,15 +7,15 @@
 // Creating the Data Acess Object of Projects
 class ProjectsDAO{
 	// Making the create project
-	public function createProject(){
+	public function createProject($name,$content,$featuredPhotoPath,$deliverydate){
 		try {
 			$sql = new SQL();
 			$statement = $sql->query("INSERT INTO FB_PROJECTS (project_name,project_content,project_featuredphoto,project_deliveryDate)
 				VALUES (:NAME,:CONTENT,:FEATUREDPHOTO,:DELIVERYDATE)",
-				array(":NAME"=>$this->getName(),
-					":CONTENT"=>$this->getContent(),
-					":FEATUREDPHOTO"=>$this->getFeaturedphoto(),
-					":DELIVERYDATE"=>$this->getDeliverydate())
+				array(":NAME"=>$name,
+					":CONTENT"=>$content,
+					":FEATUREDPHOTO"=>$featuredPhotoPath,
+					":DELIVERYDATE"=>$deliverydate)
 			);
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);

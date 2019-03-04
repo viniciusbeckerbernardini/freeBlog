@@ -29,13 +29,13 @@ if(verifyAuthUser()){
 						<input type="file" name="featuredphoto" enctype="multipart/form-data"/>
 					</div>
 					<div class = "file-path-wrapper">
-						<input class="file-path validate" value="<?php echo $postInfo['post_featuredphoto']; ?>" type ="text" placeholder="Upload file"/>
+						<input class="file-path validate" name="featuredphoto" value="<?php echo $postInfo['post_featuredphoto']; ?>" type ="text" placeholder="Upload file"/>
 					</div>
 				</div>
 			</div>
 			<div class="input-field col s6">
-				<input id="postname" name="postid" type="text" readonly="readonly" value="<?php echo $postInfo['post_id']; ?>">
-				<label for="postname">ID da categoria</label>
+				<input id="postid" name="postid" type="text" readonly="readonly" value="<?php echo $postInfo['post_id']; ?>">
+				<label for="postname">ID do post</label>
 			</div>
 			<div class="input-field col s6">
 				<input id="postname" name="postname" type="text" class="validate" value="<?php echo $postInfo['post_name']; ?>">

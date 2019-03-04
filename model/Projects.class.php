@@ -13,11 +13,12 @@ class Projects{
 	private $deliveryDate;
 
 	// Creating the constructor
-	public function __construct($name = "",$content ="",$featuredPhoto ="",$deliveryDate=""){
+	public function __construct($name = "",$content ="",$featuredPhoto ="",$deliveryDate="",$id = 0){
 		$this->setName($name);
 		$this->setContent($content);
 		$this->setFeaturedphoto($featuredPhoto);
 		$this->setDeliverydate($deliveryDate);
+		$this->setProjectid($id);
 	}
 	// Creating the destructor
 	public function __destruct(){

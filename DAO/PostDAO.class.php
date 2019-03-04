@@ -32,7 +32,8 @@ class PostDAO{
 					":SLUG"=>$slug,
 					":CONTENT"=>$content,
 					":POSTCATEGORY"=>$postCategory,
-					":ID"=>$featuredPhotoPath
+					":FEATUREDPHOTO"=>$featuredPhotoPath,
+					":ID"=>$id
 				)
 			);
 		} catch (Exception $e) {
@@ -53,10 +54,9 @@ class PostDAO{
 	// Making delete Post
 	public function deletePost($id){
 		try {
-			$this->setPostid($id);
 			$sql = new SQL();
 			$statement = $sql->query("DELETE FROM FB_POST WHERE post_id = :ID",
-				array(":ID"=>$this->getPostid()));	
+				array(":ID"=>$id));	
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);
 		}

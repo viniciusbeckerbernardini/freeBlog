@@ -43,14 +43,15 @@ switch ($operation) {
 	if(move_uploaded_file($featuredPhoto['tmp_name'], $dirUpload.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']["name"])){
 		// Creating the url to acess this photos after
 		$featuredPhotoPath = siteURL().DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
-		// Instance of ProjectDAO, passing the parameters to the constructor to set the values
-		$p = new ProjectsDAO($name,$content,$featuredPhotoPath,$deliverydate);
+		// Instance of Project, passing the parameters to the constructor to set the values
+		$p = new Projects($name,$content,$featuredPhotoPath,$deliverydate);
+		$pDAO = new ProjectsDAO();
 		// Using the function createProject to create the register
-		$p->createProject();
+		$pDAO->createProject($p->getName(),$p->getContent(),$p->getFeaturedphoto(),$p->getDeliverydate());
 		
 	// Redirecting to the panel and informing the project has been created
-	// Info : cp = created project
-		header("Location: ".siteURL().'/list/project?info=cpj');
+	// Info : cpj = created project
+	header("Location: ".siteURL().'/list/project?info=cpj');
 	}
 	break;
 
