@@ -69,10 +69,10 @@ switch ($operation) {
 	if($featuredPhoto['error'] == 4){
 		$featuredPhotoDesc = filter_input(INPUT_POST, 'featuredphotoDesc');
 		// Instance of ProjectDAO, passing the parameters to the constructor to set the values
-		$p = new ProjectsDAO();
-		// Using the function createProject to create the register
-		// Getting the actual pathname to update
-		$p->updateProject($id,$name,$content,$featuredPhotoDesc,$deliverydate);	
+		$p = new Projects($name,$content,$featuredPhotoDesc,$deliverydate,$id);
+		$pDAO = new ProjectsDAO();
+			// Using the function createProject to create the register
+		$pDAO->updateProject($p->getProjectid(),$p->getName(),$p->getContent(),$p->getFeaturedphoto(),$p->getDeliverydate());
 		// Redirecting to the panel and informing the project has been updated
 		// Info : cp = updated project
 		header("Location: ".siteURL().'/list/project?info=upj');
@@ -98,9 +98,10 @@ switch ($operation) {
 			// Creating the url to acess this photos after
 			$featuredPhotoPath = siteURL().DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
 			// Instance of ProjectDAO, passing the parameters to the constructor to set the values
-			$p = new ProjectsDAO();
+			$p = new Projects($name,$content,$featuredPhotoPath,$deliverydate,$id);
+			$pDAO = new ProjectsDAO();
 			// Using the function createProject to create the register
-			$p->updateProject($id,$name,$content,$featuredPhotoPath,$deliverydate);
+			$pDAO->updateProject($p->getProjectid(),$p->getName(),$p->getContent(),$p->getFeaturedphoto(),$p->getDeliverydate());
 			// Redirecting to the panel and informing the project has been updated
 			// Info : cp = updated project
 			header("Location: ".siteURL().'/list/project?info=upj');
@@ -111,11 +112,13 @@ switch ($operation) {
 	case 'delete':
 	// Getting the values of the url using $_GET
 	$projectID = filter_input(INPUT_GET,'projectID');
+	
+	$p = new Projects("","","","",$projectID);
 	// Instancing the ProjectsDAO
-	$p = new ProjectsDAO();
+	$pDAO = new ProjectsDAO();
 	// Setting the id of the project
 	// Calling the delete function
-	$p->deleteProject($projectID);
+	$pDAO->deleteProject($p->getProjectid());
 	// Redirecting to the panel and informing the project has been deleted
 	// Info : cp = deleted project
 	header("Location: ".siteURL().'/list/project?info=dpj');
