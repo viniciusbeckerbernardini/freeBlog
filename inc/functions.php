@@ -7,14 +7,14 @@ DON'T EDIT IF YOU DONT KNOW!
 function loadClass($className){
 	// Creating array with all possible paths
 	$filename = [
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".class.php",
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".class.php",
-		"..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".class.php",
-		"model".DIRECTORY_SEPARATOR.$className.".class.php",
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".class.php",
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".class.php",
-		"..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".class.php",
-		"DAO".DIRECTORY_SEPARATOR.$className.".class.php"
+		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".php",
+		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".php",
+		"..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".php",
+		"model".DIRECTORY_SEPARATOR.$className.".php",
+		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".php",
+		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".php",
+		"..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".php",
+		"DAO".DIRECTORY_SEPARATOR.$className.".php"
 	];
 	// Get the number os rows of the filename array
 	$filenameCount = count($filename);
