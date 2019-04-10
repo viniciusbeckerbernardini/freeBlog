@@ -3,6 +3,7 @@
 *@class Posts
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
+namespace model;
 
 class Post{
 	// Creating atributes
@@ -12,15 +13,17 @@ class Post{
 	private $content;
 	private $postCategory;
 	private $featuredPhoto;
+	private $author;
 
 
 	// Creating constructor
-	public function __construct($name = "",$slug = "",$content = "",$postCategory = 0,$featuredPhoto = "", $id = 0){
+	public function __construct($name = "",$slug = "",$content = "",$postCategory = 0,$featuredPhoto = "",$author = 0, $id = 0){
 		$this->setName($name);
 		$this->setSlug($slug);
 		$this->setContent($content);
 		$this->setPostCategory($postCategory);
 		$this->setFeaturedphoto($featuredPhoto);
+		$this->setAuthor($author);
 		$this->setPostid($id);
 	}
 	// Creating destructor
@@ -28,57 +31,49 @@ class Post{
 	}
 
 	// Creating Getters and Setters methods
-	// Getter of postsId
 	public function getPostid():int{
 		return $this->postsID;
 	}
-	// Setter of postsId
 	public function setPostid(int $value){
 		$this->postsID = $value;
 	}
-	// Getter of name
 	public function getName():string{
 		return $this->name;
 	}
-	// Setter of name
 	public function setName(string $value){
 		$this->name = $value;
 	}
-	// Getter of slug
 	public function getSlug():string{
 		return $this->slug;
 	}
-	// Setter of slug
 	public function setSlug(string $value){
 		$this->slug = $value;
 	}
-  	// Getter of content
 	public function getContent():string{
 		return $this->content;
 	}
-	// Setter of content
 	public function setContent(string $value){
 		$this->content = $value;
 	}
-  // Getter of postCategory
 	public function getPostCategory():int{
 		return $this->postCategory;
 	}
-	// Setter of postCategory
 	public function setPostCategory(int $value){
 		$this->postCategory = $value;
 	}
-
-	// Getter of featured content
 	public function getFeaturedphoto():string{
 		return $this->featuredPhoto;
 	}
-	// Setter of featured photo
 	public function setFeaturedphoto(string $value){
 		$this->featuredPhoto = $value;
 	}
+	public function setAuthor(int $author){
+		$this->author = $author;
+	}
+	public function getAuthor():int{
+		return $this->author;
+	}
 
-	// Creating Posts toString
 	public function __toString(){
 		return nl2br(
 			"ID da postagem: ".$this->getPostid().

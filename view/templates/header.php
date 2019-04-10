@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/jQuery-mosaic.css">
 	<!-- End of importing -->
 	<link rel="stylesheet" type="text/css" href="<?php siteUrl(); ?>/view/library/css/my-style.css">
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<!-- End of loading of stylesheet -->
 </head>
 <body>

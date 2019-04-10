@@ -7,6 +7,9 @@
 */
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+use \model\Projects as Projects;
+use \DAO\Projects as ProjectsDAO;	
+
 // Getting the operation using $_GET
 $operation = $_GET['operation'];
 switch ($operation) {

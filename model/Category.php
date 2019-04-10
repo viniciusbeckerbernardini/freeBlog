@@ -3,7 +3,7 @@
 *@class Category
 *@author Vinícius Becker Bernardini
 */
-
+namespace model;
 class Category{
 	// Creating the atributes
 	private $categoryId;

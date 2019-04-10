@@ -4,7 +4,11 @@
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
 // Creating Data Acess Object of User
-class UserDAO{
+namespace DAO;
+use \PDO as PDO;
+use \model\SQL as SQL;
+
+class User{
 
 	// Creating Register function
 	public function createUser($name,$email,$password,$userType){

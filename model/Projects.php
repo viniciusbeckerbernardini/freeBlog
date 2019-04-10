@@ -3,6 +3,7 @@
 * @class Projetcs
 * @author Vinícius Becker Bernardini
 */
+namespace model;
 
 class Projects{
 	// Creating the atributes

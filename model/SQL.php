@@ -4,6 +4,9 @@
 *@author Vinícius Becker Bernardini
 *@since 27/09/2018
 */
+namespace model;
+use \PDO as PDO;
+
 class SQL extends PDO{
 	// Creating the attributes 
 	private $conn;

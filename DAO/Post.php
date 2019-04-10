@@ -3,19 +3,23 @@
 *@classname PostsDAO
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
+namespace DAO;
+use \PDO as PDO;
+use \model\SQL as SQL;
 // Creating Data Acess Object of Posts
-class PostDAO{
+class Post{
 	// Making create Posts
-	public function createPost($name,$slug,$content,$category,$featuredPhotoPath){
+	public function createPost($name,$slug,$content,$category,$featuredPhotoPath,$author){
 		try {
 			$sql = new SQL();
-			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_slug,post_content,post_category,post_featuredphoto)
-				VALUES (:NAME,:SLUG,:CONTENT,:POSTCATEGORY,:POSTFEATUREDPHOTO)",
+			$statement = $sql->query("INSERT INTO FB_POST (post_name,post_slug,post_content,post_category,post_featuredphoto,post_author)
+				VALUES (:NAME,:SLUG,:CONTENT,:POSTCATEGORY,:POSTFEATUREDPHOTO,:POSTAUTHOR)",
 				array(":NAME"=>$name,
 					":SLUG"=>$slug,
 					":CONTENT"=>$content,
 					":POSTCATEGORY"=>$category,
-					":POSTFEATUREDPHOTO"=>$featuredPhotoPath
+					":POSTFEATUREDPHOTO"=>$featuredPhotoPath,
+					":POSTAUTHOR"=>$author
 				)
 			);			
 		} catch (Exception $e) {

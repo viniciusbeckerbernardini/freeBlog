@@ -1,6 +1,9 @@
 <?php
 // Requesting the config file
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
+
+use \DAO\Post as PostDAO;
+
 // Checking if is a authenticate user
 if(verifyAuthUser()){
 	// Requesting the header file

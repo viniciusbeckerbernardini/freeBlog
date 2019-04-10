@@ -3,8 +3,12 @@
 *@classname CategoryDAO
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
+
+namespace DAO;
+
+use \model\SQL as SQL;
 // Creating Data Acess Object of Category
-class CategoryDAO{
+class Category{
 	// Making create category
 	public function createCategory($name){
 		try{
@@ -48,7 +52,7 @@ class CategoryDAO{
 		try {
 			$sql = new SQL();
 			$statement = $sql->query("SELECT * FROM FB_CATEGORY");
-			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			$result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 			return $result;	
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);

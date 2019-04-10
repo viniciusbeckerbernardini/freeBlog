@@ -1,3 +1,5 @@
+DROP DATABASE freeBlog;
+
 CREATE DATABASE freeBlog;
 USE freeBlog;
 
@@ -7,6 +9,16 @@ CREATE TABLE FB_CATEGORY(
      primary key (category_id)
 );
 
+CREATE TABLE FB_USER(
+     user_id int not null auto_increment,
+     user_name varchar(64) not null,
+     user_email varchar(64) not null,
+     user_thumbnail longtext null,
+     user_password varchar(256) not null,
+     user_type enum ('assinante','administrador') not null,
+     primary key (user_id)
+);
+
 CREATE TABLE FB_POST(
      post_id int not null auto_increment,
      post_name varchar(64) not null, 
@@ -14,7 +26,9 @@ CREATE TABLE FB_POST(
      post_content longtext not null,
      post_featuredphoto longtext null,
      post_category int not null,
+     post_author int not null,
      post_publish_date datetime default CURRENT_TIMESTAMP not null,
+     foreign key (post_author) references FB_USER(user_id),
      foreign key (post_category) references FB_CATEGORY(category_id),
      primary key (post_id)
 );
@@ -33,16 +47,6 @@ CREATE TABLE FB_PROJECTS(
      project_featuredphoto longtext not null,
      project_deliverydate date not null,
      primary key (project_id)
-);
-
-CREATE TABLE FB_USER(
-     user_id int not null auto_increment,
-     user_name varchar(64) not null,
-     user_email varchar(64) not null,
-     user_thumbnail longtext null,
-     user_password varchar(256) not null,
-     user_type enum ('assinante','administrador') not null,
-     primary key (user_id)
 );
 
 /* Este é um usuário com a senha 123456 */

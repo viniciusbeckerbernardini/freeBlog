@@ -4,8 +4,11 @@
 *@author Vinícius Becker
 *@since 30/09/2018
 */
+namespace DAO;
+use \PDO as PDO;
+use \model\SQL as SQL; 
 // Creating the Data Acess Object of Projects
-class ProjectsDAO{
+class Projects{
 	// Making the create project
 	public function createProject($name,$content,$featuredPhotoPath,$deliverydate){
 		try {

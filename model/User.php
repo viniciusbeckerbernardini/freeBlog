@@ -3,7 +3,7 @@
 *@class User
 *@author Leonardo Pereira Oliveira & Vinícius Becker Bernardini
 */
-
+namespace model;
 class User{
 	// Creating atributes
 	private $userID;

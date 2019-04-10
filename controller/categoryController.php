@@ -7,6 +7,8 @@
 */
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+use \model\Category as Category;
+use \DAO\Category as CategoryDAO;
 // Using the $_GET to get the operation request
 $operation = filter_input(INPUT_GET,"operation");
 switch ($operation){

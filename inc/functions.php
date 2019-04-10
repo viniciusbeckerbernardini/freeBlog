@@ -5,16 +5,10 @@ DON'T EDIT IF YOU DONT KNOW!
 **/
 // Creating the autoload function
 function loadClass($className){
+	$className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
 	// Creating array with all possible paths
 	$filename = [
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".php",
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".php",
-		"..".DIRECTORY_SEPARATOR."model".DIRECTORY_SEPARATOR.$className.".php",
-		"model".DIRECTORY_SEPARATOR.$className.".php",
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".php",
-		"..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".php",
-		"..".DIRECTORY_SEPARATOR."DAO".DIRECTORY_SEPARATOR.$className.".php",
-		"DAO".DIRECTORY_SEPARATOR.$className.".php"
+		$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.$className.".php",
 	];
 	// Get the number os rows of the filename array
 	$filenameCount = count($filename);
@@ -22,7 +16,7 @@ function loadClass($className){
 	for ($i=0; $i < $filenameCount ; $i++) {
 		if(file_exists($filename[$i])){
 			require_once($filename[$i]);
-		} 
+		}
 	}
 }
 // Using the spl function to register the function below
@@ -84,7 +78,7 @@ function verifyAuthUser(){
 		$login = $_SESSION['authUser']['login'];
 		$password = $_SESSION['authUser']['password'];
 		// Calling the SQL class
-		$sql = new SQL();
+		$sql = new model\SQL();
 		// Making the statement
 		$statement = $sql->query("SELECT * FROM FB_USER where user_email = :EMAIL and user_password = :PASSWORD",
 			array(
@@ -95,6 +89,32 @@ function verifyAuthUser(){
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		if($result != null){
 			return true;
+		}else if ($result == null){
+			return false;	
+		}
+	}
+}
+
+// Function to return userID
+function verifyAuthUserAndReturnTheID(){
+	// Regenerating the id every new page
+	session_regenerate_id();
+	// Verifying is the session variable exists
+	if(isset($_SESSION['authUser'])){
+		$login = $_SESSION['authUser']['login'];
+		$password = $_SESSION['authUser']['password'];
+		// Calling the SQL class
+		$sql = new model\SQL();
+		// Making the statement
+		$statement = $sql->query("SELECT * FROM FB_USER where user_email = :EMAIL and user_password = :PASSWORD",
+			array(
+				':EMAIL'=>$login,
+				':PASSWORD'=>$password
+			));
+		// Getting the result
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		if($result != null){
+			return $result[0]['user_id'];
 		}else if ($result == null){
 			return false;	
 		}

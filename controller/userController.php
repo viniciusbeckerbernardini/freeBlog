@@ -6,6 +6,8 @@
 */
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
+use \model\User as User;
+use \DAO\User as UserDAO;
 // Getting the operation using $_GET
 $operation = filter_input(INPUT_GET, 'operation');
 // Using the switch to get the request operation

@@ -1,6 +1,7 @@
 <?php
 // Requesting the config file
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
+use \DAO\Category as CategoryDAO;
 // Checking if is a authenticate user
 if(verifyAuthUser()){
 	// Requesting the header file

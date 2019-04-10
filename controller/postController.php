@@ -5,6 +5,9 @@
 * @since 13/10/2017
 * @updated for filter_input in 28/10/2018
 */
+
+use \DAO\Post as PostDAO;
+use \Model\Post as Post;
 // Request the configuration file
 require_once('..'.DIRECTORY_SEPARATOR.'inc'.DIRECTORY_SEPARATOR.'config.php');
 // Using the $_GET to get the operation request
@@ -17,6 +20,7 @@ switch ($operation) {
 	$category = filter_input(INPUT_POST,'postcategory');
 	$content = filter_input(INPUT_POST, 'postcontent');
 	$featuredPhoto = $_FILES['featuredphoto'];
+	$author = verifyAuthUserAndReturnTheID();
 
 	try {
 		// Moving the photo into directory
@@ -46,10 +50,10 @@ switch ($operation) {
 			$featuredPhotoPath = DIRECTORY_SEPARATOR.DIRNAME.DIRECTORY_SEPARATOR.$year.DIRECTORY_SEPARATOR.$month.DIRECTORY_SEPARATOR.$featuredPhoto['userfile']['name'];
 		// Instancing the PostsDAO class
 		// Passing the values through the constructor
-			$p = new Post($name,$slug,$content,$category,$featuredPhotoPath);
+			$p = new Post($name,$slug,$content,$category,$featuredPhotoPath,$author);
 			$pDAO = new PostDAO();
 		// Acessing the createPost method to create the post
-			$pDAO->createPost($p->getName(),$p->getSlug(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto());
+			$pDAO->createPost($p->getName(),$p->getSlug(),$p->getContent(),$p->getPostCategory(),$p->getFeaturedphoto(),$p->getAuthor());
 		// Redirecting to the panel and informing the post has been created
 		// Info : cp = created post
 			header("Location: ".siteURL().'/list/post?info=cp');
