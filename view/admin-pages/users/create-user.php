@@ -8,7 +8,7 @@ if(verifyAuthUser()){
 ?>
 <h2 class="center">Registrar usuário</h2>
 <div class="row">	
-	<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/userController.php?operation=create" >
+	<form class="col s12" method="post" enctype="multipart/form-data" action="/create/user" >
 		<div class="input-field col s6">
 			<input id="username" name="username" type="text" class="validate">
 			<label for="username">Nome do usuário</label>

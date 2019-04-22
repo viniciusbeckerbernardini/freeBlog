@@ -1,17 +1,11 @@
 <?php 
-// Requesting the config file
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 if(verifyAuthUser()){
-	// Requesting the header file
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 	?>
 	<h2 class="center">Categorias</h2>
 	<?php
-	// Bring all projects
-	// Instancing the class PDO
-	$c = new \DAO\Category();
-	$results = $c->listCategory();
-	// print_r($results);
+	$results = listAllFromTable("FB_CATEGORY");
 	// Getting the information the post has been deleted,updated,created.
 	$message = filter_input(INPUT_GET,'info');
 	if($message == 'cc'){
@@ -22,7 +16,6 @@ if(verifyAuthUser()){
 		echo "<script>alert('Categoria deletada!');</script>";
 	}
 	?>
-
 	<a class="btn waves-effect waves-light" href="/create/category">Criar categoria</a>
 	<table class="table-responsive">
 		<thead>
@@ -41,16 +34,18 @@ if(verifyAuthUser()){
 						<a href="/update/category?id=<?php echo $result['category_id']; ?>" class="btn waves-effect waves-light">
 							Atualizar
 						</a>
-						<a href="../../../controller/categoryController.php?operation=delete&categoryID=<?php echo $result['category_id']; ?>" class="btn waves-effect waves-light red">
-							Deletar
-						</a>
+						<form method="post" action="/delete/category">
+							<input type="hidden" name="categoryID" value="<?php echo $result['category_id']; ?>">
+							<button class="btn waves-effect waves-light red">
+								Deletar
+							</button>
+						</form>
 					</td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
 	</table>
 	<?php 
-	// Requesting the footer file
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
 	header('Location:'.siteURL().'/admin');

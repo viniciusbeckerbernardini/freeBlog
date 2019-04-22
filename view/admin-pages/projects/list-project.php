@@ -1,19 +1,11 @@
 <?php 
-// Requesting the config file
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
-use \DAO\Projects as ProjectsDAO;
-// Checking if is a authenticate user
 if(verifyAuthUser()){
-	// Requesting the header file
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
 	?>
 	<h2 class="center">Projetos</h2>
 	<?php 
-	// Bring all projects
-	// Instancing the class ProjectsDAO
-	$p = new ProjectsDAO();
-	// Getting the data using the listProject Function
-	$results = $p->listProject();
+	$results = listAllFromTable("FB_PROJECTS");
 	// Getting the information the post has been deleted,updated,created.
 	$message = filter_input(INPUT_GET,'info');
 	if($message == 'cpj'){
@@ -48,9 +40,12 @@ if(verifyAuthUser()){
 						<a href="/update/project?id=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light">
 							Atualizar
 						</a>
-						<a href="../../../controller/projectController.php?operation=delete&projectID=<?php echo $result['project_id']; ?>" class="btn waves-effect waves-light red">
-							Deletar
-						</a>
+						<form method="post" action="/delete/project">
+							<input type="hidden" name="projectID" value="<?php echo $result['project_id']; ?>">
+							<button class="btn waves-effect waves-light red">
+								Deletar
+							</button>
+						</form>
 					</td>
 				</tr>
 			<?php endforeach; ?>

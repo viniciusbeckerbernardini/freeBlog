@@ -9,7 +9,7 @@ if(verifyAuthUser()){
 	?>
 	<h2 class="center">Registrar categoria</h2>
 	<div class="row">	
-		<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/categoryController.php?operation=create" >
+		<form class="col s12" method="post" action="/create/category" >
 			<div class="input-field col s12">
 				<input id="projectname" name="categoryname" type="text" class="validate">
 				<label for="projectname">Nome da categoria</label>

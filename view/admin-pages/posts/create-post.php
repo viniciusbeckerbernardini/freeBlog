@@ -4,19 +4,12 @@ require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
 use \DAO\Category as CategoryDAO;
 // Checking if is a authenticate user
 if(verifyAuthUser()){
-	// Requesting the header file
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
-	?>
-	<?php
-	// Bring all projects
-	// Instancing the class CategoryDAO
-	$c = new CategoryDAO();
-	$results = $c->listCategory();
-	// print_r($results);
+	$results = listAllFromTable("FB_CATEGORY");
 	?>
 	<h2 class="center">Criar postagem</h2>
 	<div class="row">
-		<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postController.php?operation=create" >
+		<form class="col s12" method="post" enctype="multipart/form-data" action="/create/post" >
 			<div class="col s12">	
 				<label>Imagem de destaque</label>
 				<div class = "file-field input-field">
@@ -60,7 +53,7 @@ if(verifyAuthUser()){
 
 	<?php
 // Requesting the footer file
-require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
+	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
 	header('Location:'.siteURL().'/admin');
 }

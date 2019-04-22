@@ -7,7 +7,7 @@ if(verifyAuthUser()){
 	header('Location:'.siteURL().'/admin/panel');
 }
 ?>
-<form method="post" action="<?php siteUrl(); ?>/controller/adminController.php?operation=login">
+<form method="post" action="<?php siteUrl(); ?>/admin">
 	<div class="row">
 		<div class="col s12 center">	
 			<div class="row">

@@ -1,26 +1,17 @@
 <?php
-// Requesting the config file
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
-// Checking if is a authenticate user
 if(verifyAuthUser()){
-	// Requesting the header file
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
-	// Getting the informations by the id passed in the $_GET
-	$postId = $_GET['id'];
-	$p = new PostDAO();
-	$postInfo = $p->getInfoById($postId);
-	// Instancing the class CategoryDAO
-	$c = new CategoryDAO();
-	// Acessing the list category method to display all categories to user can change
-	$listCategory = $c->listCategory();
-	// Getting the actual category from post
+
+	$postInfo = getInfoByIdOfTable("FB_POST","post_id");
 	$currentCategoryID = $postInfo['post_category'];
-	// Acessing the method 
-	$currentCategory = $c->getInfoByIdtoUpdatePost($currentCategoryID);
+	$currentCategory = getInfoByIdtoUpdatePost($currentCategoryID);
+	$listCategory = listAllFromTable("FB_CATEGORY");
+
 	?>
 	<h2 class="center">Registrar postagem</h2>
 	<div class="row">
-		<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/postController.php?operation=update" >
+		<form class="col s12" method="post" enctype="multipart/form-data" action="/update/post" >
 			<div class="col s12">	
 				<label>Imagem de destaque</label>
 				<div class = "file-field input-field">
@@ -34,7 +25,7 @@ if(verifyAuthUser()){
 				</div>
 			</div>
 			<div class="input-field col s6">
-				<input id="postid" name="postid" type="text" readonly="readonly" value="<?php echo $postInfo['post_id']; ?>">
+				<input id="postid" name="post_id" type="text" readonly="readonly" value="<?php echo $postInfo['post_id']; ?>">
 				<label for="postname">ID do post</label>
 			</div>
 			<div class="input-field col s6">

@@ -5,7 +5,7 @@
 */
 namespace DAO;
 use \PDO as PDO;
-use \model\SQL as SQL;
+use \Persistence\SQL as SQL;
 // Creating Data Acess Object of Posts
 class Post{
 	// Making create Posts
@@ -44,37 +44,12 @@ class Post{
 			throw new Exception("Error Processing Request, error $e");
 		}
 	}
-	// Making list Post
-	public function listPost(){
-		try {
-			$sql = new SQL();
-			$statement = $sql->query("SELECT * FROM FB_POST");
-			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-			return $result;	
-		} catch (Exception $e) {
-			throw new Exception("Error Processing Request, error $e", 1);
-		}
-	}
 	// Making delete Post
 	public function deletePost($id){
 		try {
 			$sql = new SQL();
 			$statement = $sql->query("DELETE FROM FB_POST WHERE post_id = :ID",
 				array(":ID"=>$id));	
-		} catch (Exception $e) {
-			throw new Exception("Error Processing Request, error $e", 1);
-		}
-	}
-	// Making getInfoById function
-	function getInfoById(){
-		try {
-			$id = $_GET['id'];
-			$sql = new SQL();
-			$statement = $sql->query("SELECT * FROM FB_POST WHERE post_id = :ID",
-				array(":ID"=>$id)
-			);
-			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-			return $result[0];	
 		} catch (Exception $e) {
 			throw new Exception("Error Processing Request, error $e", 1);
 		}

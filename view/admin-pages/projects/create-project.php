@@ -8,7 +8,7 @@ if(verifyAuthUser()){
 	?>
 	<h2 class="center">Registrar projeto</h2>
 	<div class="row">	
-		<form class="col s12" method="post" enctype="multipart/form-data" action="../../../controller/projectController.php?operation=create" >
+		<form class="col s12" method="post" enctype="multipart/form-data" action="/create/project" >
 			<div class="input-field col s6">
 				<input id="projectname" name="projectname" type="text" class="validate">
 				<label for="projectname">Nome do projeto</label>

@@ -1,18 +1,12 @@
 <?php
-// Requesting the config file
 require_once('inc'.DIRECTORY_SEPARATOR.'config.php');
-// Checking if is a authenticate user
 if(verifyAuthUser()){
-	// Requesting the header file
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.php');
-// Getting the function getInfoById
-	$userID = $_GET['id'];
-	$u = new UserDAO();
-	$fieldsInfos = $u->getInfoById($userID);
+	$fieldsInfos = getInfoByIdOfTable("FB_USER","user_id");
 	?>
 	<h2 class="center">Atualizar usuário</h2>
 	<div class="row">
-		<form class="col s12" method="post"  action="../../../controller/userController.php?operation=update">
+		<form class="col s12" method="post"  action="/update/user">
 			<div class="input-field col s6">
 				<input id="userid" name="userid" type="text" readonly="readonly" value="<?php echo $fieldsInfos['user_id']; ?>"  class="validate disabled">
 				<label for="projectid">ID do usuário</label>
@@ -26,8 +20,7 @@ if(verifyAuthUser()){
 				<label for="useremail">E-mail do usuário</label>
 			</div>
 			<div class="input-field col s4">
-				<input type="text" id="userpassword" name="userpassword" value="<?php echo $fieldsInfos['user_email'];
-				; ?>">
+				<input type="password" id="userpassword" name="userpassword">
 				<label for="userpassword">Senha do usuário</label>
 			</div>
 			<div class="input-field col s4">
