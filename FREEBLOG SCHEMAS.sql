@@ -1,4 +1,4 @@
-DROP DATABASE freeBlog;
+DROP DATABASE IF EXISTS   freeBlog;
 
 CREATE DATABASE freeBlog;
 USE freeBlog;

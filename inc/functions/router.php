@@ -1,15 +1,27 @@
 <?php 
 
-function siteURL(){
+function siteURL($return=false){
 	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 	$domainName = $_SERVER['HTTP_HOST'];
-	echo $protocol.$domainName;
+	if(!$return){
+		echo $protocol.$domainName;
+	}
+	if($return){
+		return $protocol.$domainName;	
+	}
 }
 
 function itemID(){
-	if(isset($_GET['id'])){
-		$id = $_GET['id'];
-		return $id;
+	if($_GET['id']){
+		$id = filter_input(INPUT_GET,"id");
+		return $id;	
+	}
+}
+
+function actualPage(){
+	if(isset($_GET['p'])){
+		$page = filter_input(INPUT_GET, "p");
+		return $page;
 	}
 }
 
@@ -53,6 +65,9 @@ function router(){
 			require_once("view/admin-pages/categories/list-category.php");	
 			break;
 			case "/list/category?info=dc":
+			require_once("view/admin-pages/categories/list-category.php");	
+			break;
+			case "/list/category?p=".actualPage():
 			require_once("view/admin-pages/categories/list-category.php");	
 			break;
 			case "/update/category?id=".itemID():

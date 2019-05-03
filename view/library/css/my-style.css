@@ -25,10 +25,7 @@ h2{
 }
 
 .page-footer{
-	position: fixed;
-	bottom: 0;
 	width:100%;
-	z-index: 9999;
 }
 
 .row {
@@ -98,6 +95,10 @@ div#main-post {
     height: auto;
 }
 
+.center.pagination {
+    margin-top: 70px;
+    padding: 0px 60px;
+}
 
 @media screen and (max-width:768px){
 

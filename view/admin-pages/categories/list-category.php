@@ -5,7 +5,9 @@ if(verifyAuthUser()){
 	?>
 	<h2 class="center">Categorias</h2>
 	<?php
-	$results = listAllFromTable("FB_CATEGORY");
+	$page = $_GET['p']?$_GET['p']:1;
+
+	$results = listAllFromTableWithPagination("FB_CATEGORY",(int)$page);
 	// Getting the information the post has been deleted,updated,created.
 	$message = filter_input(INPUT_GET,'info');
 	if($message == 'cc'){
@@ -26,25 +28,12 @@ if(verifyAuthUser()){
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($results as $result):?>
-				<tr>
-					<td><?php echo $result['category_id'] ?></td>
-					<td><?php echo $result['category_name'] ?></td>
-					<td>
-						<a href="/update/category?id=<?php echo $result['category_id']; ?>" class="btn waves-effect waves-light">
-							Atualizar
-						</a>
-						<form method="post" action="/delete/category">
-							<input type="hidden" name="categoryID" value="<?php echo $result['category_id']; ?>">
-							<button class="btn waves-effect waves-light red">
-								Deletar
-							</button>
-						</form>
-					</td>
-				</tr>
-			<?php endforeach; ?>
+			<?php itensCounter($results); ?>
 		</tbody>
 	</table>
+	<div class="center pagination">
+		<?php pagination(20); ?>
+	</div>
 	<?php 
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
 }else{
