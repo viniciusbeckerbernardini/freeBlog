@@ -72,7 +72,7 @@ function itensCounter($results){
 		<td>".$result['category_id']."</td>
 		<td>".$result['category_name']."</td>
 		<td>
-		<a href='/update/category?id='".$result['category_id']."' class='btn waves-effect waves-light'>
+		<a href='/update/category?id=".$result['category_id']."' class='btn waves-effect waves-light'>
 		Atualizar
 		</a>
 		<form method='post' action='/delete/category'>
@@ -88,10 +88,15 @@ function itensCounter($results){
 }
 
 function pagination($v){
+	$pattern = '/\?p=\d{1,100}$/';
+	$pattern2 = '/\?info=.{0,4}$/';
+	$uri = $_SERVER['REQUEST_URI'];
+	$formatURI = preg_replace($pattern,'?p=',$uri);
+	$formatURI = preg_replace($pattern2,'?p=',$formatURI);
 	$html ='<div class="row">';
 	$ii= 1;
 	for ($i=1; $i < $v ; $i = $i + 10) {
-		$html .='<div class="col s1"><a href="'.siteURL(true).preg_replace("/^p=[0,9]$/","",$_SERVER['REQUEST_URI']).'"/>'.$ii.'</a></div>';
+		$html .='<div class="col s1"><a href="'.siteURL(true).$formatURI.$ii.'"/>'.$ii.'</a></div>';
 		$ii++;
 	}
 	$html .='</div>';

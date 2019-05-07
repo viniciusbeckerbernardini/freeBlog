@@ -12,7 +12,7 @@ function siteURL($return=false){
 }
 
 function itemID(){
-	if($_GET['id']){
+	if(isset($_GET['id'])){
 		$id = filter_input(INPUT_GET,"id");
 		return $id;	
 	}

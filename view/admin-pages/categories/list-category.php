@@ -5,7 +5,7 @@ if(verifyAuthUser()){
 	?>
 	<h2 class="center">Categorias</h2>
 	<?php
-	$page = $_GET['p']?$_GET['p']:1;
+	$page = isset($_GET['p'])?$_GET['p']:1;
 
 	$results = listAllFromTableWithPagination("FB_CATEGORY",(int)$page);
 	// Getting the information the post has been deleted,updated,created.

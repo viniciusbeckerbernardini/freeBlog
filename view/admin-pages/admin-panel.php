@@ -29,7 +29,7 @@ if(verifyAuthUser()){
 				<div class="collection">
 					<h6 class="center">Categorias</h6>
 					<a href="<?php echo siteURL(); ?>/create/category" class="collection-item">Criar categoria</a>
-					<a href="<?php echo siteURL(); ?>/list/category" class="collection-item">Listar categorias</a>
+					<a href="<?php echo siteURL(); ?>/list/category?p=1" class="collection-item">Listar categorias</a>
 				</div>
 			</div>
 			<div class="col s6">

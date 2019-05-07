@@ -7,7 +7,7 @@ require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'header.
 $result = getInfoByIdOfTable("FB_CATEGORY","category_id");
 
 ?>
-<h2 class="center">Registrar categoria</h2>
+<h2 class="center">Atualizar categoria</h2>
 <div class="row">	
 	<form class="col s12" method="post" enctype="multipart/form-data" action="/update/category" >
 		<div class="input-field col s6">
@@ -22,9 +22,6 @@ $result = getInfoByIdOfTable("FB_CATEGORY","category_id");
 			<h4>Ações</h4>
 			<button class="btn waves-effect waves-light" type="submit">
 				Enviar
-			</button>
-			<button class="btn waves-effect waves-light red" type="reset">
-				Limpar
 			</button>
 		</div>
 	</form>
