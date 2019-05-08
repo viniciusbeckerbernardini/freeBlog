@@ -88,8 +88,8 @@ function itensCounter($results){
 }
 
 function pagination($v){
-	$pattern = '/\?p=\d{1,100}$/';
-	$pattern2 = '/\?info=.{0,4}$/';
+	$pattern = '/\?p=\d{1,}$/';
+	$pattern2 = '/\?info=.{0,}$/';
 	$uri = $_SERVER['REQUEST_URI'];
 	$formatURI = preg_replace($pattern,'?p=',$uri);
 	$formatURI = preg_replace($pattern2,'?p=',$formatURI);
