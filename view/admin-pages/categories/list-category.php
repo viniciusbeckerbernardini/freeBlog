@@ -27,7 +27,23 @@ if(verifyAuthUser()){
 			</tr>
 		</thead>
 		<tbody>
-			<?php itensCounter($results); ?>
+		<?php foreach ($results as $result): ?>
+		<tr>
+			<td> <?=$result['category_id']?></td>
+			<td><?=$result['category_name']?></td>
+			<td>
+				<a href="/update/category?id=<?=$result['category_id']?>" class="btn waves-effect waves-light">
+					Atualizar
+				</a>
+			<form method="post" action="/delete/category">
+				<input type="hidden" name="categoryID" value="<?=$result["category_id"]?>">
+				<button class="btn waves-effect waves-light red">
+					Deletar
+				</button>
+			</form>
+			</td>
+		</tr>
+		<?php endforeach; ?>
 		</tbody>
 	</table>
 	<div class="center pagination">
