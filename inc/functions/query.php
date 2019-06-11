@@ -15,13 +15,16 @@ function listAllFromTable($table){
 
 function listAllFromTableWithPagination($table, $limit){
 	try {
-		$itemStarter = $limit == 1?1:$limit + 9;
-		$itemFinnaly = $limit * 10;
+		$itemStarter = $limit == 1?0:($limit -1) * 10 ;
+		$itemFinnaly = 10;
 
 		$sql = new SQL();
+
 		$statement = $sql->query("SELECT * FROM $table LIMIT $itemStarter,$itemFinnaly");
 		$result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
 		return $result;	
+		
 	} catch (Exception $e) {
 		throw new Exception("Error Processing Request, error $e", 1);
 	}
@@ -87,7 +90,15 @@ function itensCounter($results){
 	echo $htmlItem;	 
 }
 
-function pagination($v){
+function pagination(String $table){
+	$sql = new SQL();
+	$statement = $sql->query("SELECT SQL_CALC_FOUND_ROWS * FROM $table");
+	$statement = $sql->query("SELECT FOUND_ROWS() as totalpages");
+	$result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+	$result = $result[0]['totalpages'];
+	$result = ceil($result/10);
+
+
 	$pattern = '/\?p=\d{1,}$/';
 	$pattern2 = '/\?info=.{0,}$/';
 	$uri = $_SERVER['REQUEST_URI'];
@@ -95,7 +106,7 @@ function pagination($v){
 	$formatURI = preg_replace($pattern2,'?p=',$formatURI);
 	$html ='<div class="row">';
 	$ii= 1;
-	for ($i=1; $i < $v ; $i = $i + 10) {
+	for ($i=1; $i <= $result ; $i++) {
 		$html .='<div class="col s1"><a href="'.siteURL(true).$formatURI.$ii.'"/>'.$ii.'</a></div>';
 		$ii++;
 	}
