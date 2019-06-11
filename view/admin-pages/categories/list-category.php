@@ -6,7 +6,6 @@ if(verifyAuthUser()){
 	<h2 class="center">Categorias</h2>
 	<?php
 	$page = isset($_GET['p'])?$_GET['p']:1;
-
 	$results = listAllFromTableWithPagination("FB_CATEGORY",(int)$page);
 	// Getting the information the post has been deleted,updated,created.
 	$message = filter_input(INPUT_GET,'info');
@@ -32,7 +31,7 @@ if(verifyAuthUser()){
 		</tbody>
 	</table>
 	<div class="center pagination">
-		<?php pagination(20); ?>
+		<?php pagination("FB_CATEGORY"); ?>
 	</div>
 	<?php 
 	require_once('view'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'footer.php');
