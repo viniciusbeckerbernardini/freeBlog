@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Lato';
 }
 
@@ -10,36 +10,37 @@
     word-break: break-all;
 }
 
-h2{
-	font-family: 'Lato';
+h2 {
+    font-family: 'Lato';
 }
 
-.turquoise{
-	background-color: #40e0d0 !important;
-	color: #fc0fc0;
+.turquoise {
+    background-color: #40e0d0 !important;
+    color: #fc0fc0;
 }
 
-.turquoise a{
-	color: #000;
-	font-weight:100; 
+.turquoise a {
+    color: #000;
+    font-weight: 100;
 }
 
-.page-footer{
-	width:100%;
+.page-footer {
+    width: 100%;
 }
 
 .row {
-	padding-bottom: 90px;
+    padding-bottom: 90px;
 }
 
-.main-post-background{
-	background-size: cover !important;	
-	height: 400px;
-	max-width: 100%;
+.main-post-background {
+    background-size: cover !important;
+    height: 400px;
+    max-width: 100%;
 }
-.secundary-post-background{
-	background-size: cover !important;
-	height: 100px;
+
+.secundary-post-background {
+    background-size: cover !important;
+    height: 100px;
     max-height: 200px;
     max-width: 100%;
     width: 100%;
@@ -64,7 +65,7 @@ h2{
     -webkit-justify-content: center;
     justify-content: center;
     text-align: center;
-    background-color: rgba(34, 34, 34, 0.7); 
+    background-color: rgba(34, 34, 34, 0.7);
     max-width: 100%;
     padding: 0 .75rem;
 }
@@ -73,24 +74,24 @@ div#main-post {
     padding: 0 !important;
 }
 
-#secundary-post-div-2{
+#secundary-post-div-2 {
     margin-top: 40px;
 }
 
-#secundary-post-div-3{
+#secundary-post-div-3 {
     margin-top: 50px;
 }
 
-.menu-desktop{
+.menu-desktop {
     display: block;
 }
 
-.menu-mobile{
+.menu-mobile {
     display: none;
 }
 
-.thumb-projects{
-    width:150px;
+.thumb-projects {
+    width: 150px;
     max-width: 100%;
     height: auto;
 }
@@ -100,28 +101,61 @@ div#main-post {
     padding: 0px 60px;
 }
 
-@media screen and (max-width:768px){
+.empty-space {
+    height: 60px;
+}
 
-    .menu-desktop{
+.col.s6>div.fb-cb {
+    height: 400px;
+}
+
+.fb-cb {
+    background-size: cover !important;
+}
+
+.col.s12>div.fb-cb {
+    margin-bottom: 10px;
+    height: 195px;
+}
+
+.fb-cb-hv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(34, 34, 34, 0.7);
+    max-width: 100%;
+    transition: 0.3s linear;
+    color: #fff;
+    align-items: flex-end;
+}
+
+.fb-cb-hv p {
+    font-size: 22px;
+    width: 100%;
+    padding: 0px 20px;
+}
+
+.fb-cb:hover div.fb-cb-hv p {
+    padding: 0px 20px 20px 20px;
+    transition: .3s linear;
+}
+
+@media screen and (max-width:768px) {
+    .menu-desktop {
         display: none;
     }
-
-    .menu-mobile{
+    .menu-mobile {
         display: block;
     }
-
-    .title-menu{
-        color:#000;
+    .title-menu {
+        color: #000;
     }
-
-    #secundary-post-div-1{
+    #secundary-post-div-1 {
         margin-top: 20px;
     }
-
-    .secundary-post-background{
+    .secundary-post-background {
         height: 300px;
         max-width: 100%;
         width: 100%;
     }
-
 }
