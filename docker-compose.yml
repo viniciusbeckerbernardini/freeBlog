@@ -1,0 +1,27 @@
+version: "3.1" 
+services: 
+  www:
+    container_name: www_container
+    build:
+      context: .
+      dockerfile: Dockerfile-PHP
+    ports:
+      - 80:80
+    volumes:
+      - ./application:/var/www/html
+    networks:
+      - php_mysql_network
+  mysql_db:
+    container_name: mysql_container
+    image: mysql:5.7
+    ports: 
+      - 3306:3306
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql_schemas:/home
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - php_mysql_network
+networks:
+  php_mysql_network:
